@@ -3,9 +3,9 @@
   display: inline-block;
   pointer-events: none;
   position: absolute;
-  opacity: 0; }
+  visibility: hidden; }
 [simple-hint]:hover:after, [simple-hint]:hover:before {
-  opacity: 1; }
+  visibility: visible; }
 [simple-hint]:before {
   content: "";
   border: 5px solid transparent;
@@ -15,7 +15,7 @@
   text-align: center;
   padding: 3px 7px;
   font-size: 1.1rem;
-  line-height: 1.9em;
+  line-height: 1.8em;
   border-radius: 2px;
   z-index: 9999;
   color: white;
@@ -51,16 +51,19 @@
   top: 50%;
   margin-top: -5px; }
 .hint-left:after, .hint-right:after {
-  top: 50%; }
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
 
 .hint-left:before {
   border-left-color: #292929;
   left: 0;
   margin-left: -10px; }
 .hint-left:after {
-  margin-left: -10px;
-  left: 0;
-  transform: translate(-100%, -50%); }
+  right: 100%;
+  margin-right: 10px; }
 
 .hint-right:before {
   border-right-color: #292929;
@@ -68,67 +71,10 @@
   margin-right: -10px; }
 .hint-right:after {
   left: 100%;
-  transform: translateY(-50%);
   margin-left: 10px; }
 
-.hint-fade:before, .hint-fade:after {
-  -webkit-transition: opacity 0.3s ease;
-  -moz-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease; }
-
 .hint-persist:before, .hint-persist:after {
-  opacity: 1; }
-
-@-webkit-keyframes top {
-  from {
-    bottom: 125%; } }
-
-@-moz-keyframes top {
-  from {
-    bottom: 125%; } }
-
-@keyframes top {
-  from {
-    bottom: 125%; } }
-
-@-webkit-keyframes bottom {
-  from {
-    top: 125%; } }
-
-@-moz-keyframes bottom {
-  from {
-    top: 125%; } }
-
-@keyframes bottom {
-  from {
-    top: 125%; } }
-
-@-webkit-keyframes right {
-  from {
-    left: 125%; } }
-
-@-moz-keyframes right {
-  from {
-    left: 125%; } }
-
-@keyframes right {
-  from {
-    left: 125%; } }
-
-.hint-anim:after, .hint-anim:before {
-  transition: 0.3s; }
-.hint-anim.hint-top:hover:before, .hint-anim.hint-top:hover:after {
-  -webkit-animation: top 0.3s linear;
-  -moz-animation: top 0.3s linear;
-  animation: top 0.3s linear; }
-.hint-anim.hint-bottom:hover:before, .hint-anim.hint-bottom:hover:after {
-  -webkit-animation: bottom 0.3s linear;
-  -moz-animation: bottom 0.3s linear;
-  animation: bottom 0.3s linear; }
-.hint-anim.hint-right:hover:before, .hint-anim.hint-right:hover:after {
-  -webkit-animation: right 0.3s linear;
-  -moz-animation: right 0.3s linear;
-  animation: right 0.3s linear; }
+  visibility: visible; }
 
 .hint-small:after {
   width: 200px; }
@@ -138,3 +84,128 @@
 
 .hint-big:after {
   width: 450px; }
+
+[class*="hint-fade"]:before, [class*="hint-fade"]:after {
+  -webkit-transition: opacity 0.5s ease;
+  -moz-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  opacity: 0; }
+[class*="hint-fade"]:hover:before, [class*="hint-fade"]:hover:after {
+  opacity: 1; }
+[class*="hint-fade"][class*="-d-short"]:hover:before, [class*="hint-fade"][class*="-d-short"]:hover:after {
+  -webkit-transition-delay: 0.5s;
+  -moz-transition-delay: 0.5s;
+  transition-delay: 0.5s; }
+[class*="hint-fade"][class*="-d-med"]:hover:before, [class*="hint-fade"][class*="-d-med"]:hover:after {
+  -webkit-transition-delay: 1s;
+  -moz-transition-delay: 1s;
+  transition-delay: 1s; }
+[class*="hint-fade"][class*="-d-long"]:hover:before, [class*="hint-fade"][class*="-d-long"]:hover:after {
+  -webkit-transition-delay: 2s;
+  -moz-transition-delay: 2s;
+  transition-delay: 2s; }
+
+@-webkit-keyframes top {
+  from {
+    bottom: 125%;
+    opacity: 0; } }
+
+@-moz-keyframes top {
+  from {
+    bottom: 125%;
+    opacity: 0; } }
+
+@keyframes top {
+  from {
+    bottom: 125%;
+    opacity: 0; } }
+
+@-webkit-keyframes bottom {
+  from {
+    top: 125%;
+    opacity: 0; } }
+
+@-moz-keyframes bottom {
+  from {
+    top: 125%;
+    opacity: 0; } }
+
+@keyframes bottom {
+  from {
+    top: 125%;
+    opacity: 0; } }
+
+@-webkit-keyframes right {
+  from {
+    margin-right: -35px;
+    margin-left: 35px;
+    opacity: 0; } }
+
+@-moz-keyframes right {
+  from {
+    margin-right: -35px;
+    margin-left: 35px;
+    opacity: 0; } }
+
+@keyframes right {
+  from {
+    margin-right: -35px;
+    margin-left: 35px;
+    opacity: 0; } }
+
+@-webkit-keyframes left {
+  from {
+    margin-left: -35px;
+    margin-right: 35px;
+    opacity: 0; } }
+
+@-moz-keyframes left {
+  from {
+    margin-left: -35px;
+    margin-right: 35px;
+    opacity: 0; } }
+
+@keyframes left {
+  from {
+    margin-left: -35px;
+    margin-right: 35px;
+    opacity: 0; } }
+
+[class*="hint-anim"]:after, [class*="hint-anim"]:before {
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease; }
+[class*="hint-anim"].hint-top:hover:before, [class*="hint-anim"].hint-top:hover:after {
+  -webkit-animation-name: top;
+  -moz-animation-name: top;
+  animation-name: top; }
+[class*="hint-anim"].hint-bottom:hover:before, [class*="hint-anim"].hint-bottom:hover:after {
+  -webkit-animation-name: bottom;
+  -moz-animation-name: bottom;
+  animation-name: bottom; }
+[class*="hint-anim"].hint-left:hover:before, [class*="hint-anim"].hint-left:hover:after {
+  -webkit-animation-name: left;
+  -moz-animation-name: left;
+  animation-name: left; }
+[class*="hint-anim"].hint-right:hover:before, [class*="hint-anim"].hint-right:hover:after {
+  -webkit-animation-name: right;
+  -moz-animation-name: right;
+  animation-name: right; }
+[class*="hint-anim"][class*="-d-short"]:before, [class*="hint-anim"][class*="-d-short"]:after {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s; }
+[class*="hint-anim"][class*="-d-med"]:before, [class*="hint-anim"][class*="-d-med"]:after {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s; }
+[class*="hint-anim"][class*="-d-long"]:before, [class*="hint-anim"][class*="-d-long"]:after {
+  -webkit-animation-delay: 2s;
+  -moz-animation-delay: 2s;
+  animation-delay: 2s; }

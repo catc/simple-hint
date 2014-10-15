@@ -59,6 +59,29 @@ html
 					span(simple-hint="This is a simple hint").hint-bottom.hint-anim Hover over me
 
 			.box
+				h2 Delay
+				//- div
+				//- 	span(simple-hint="This is a simple hint").hint-top.hint-fade.anim-delay Hover over me
+				//- div
+				//- 	span(simple-hint="This is a simple hint").hint-left.hint-fade.anim-delay Hover over me
+				//- div
+				//- 	span(simple-hint="This is a simple hint").hint-right.hint-fade.anim-delay Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-bottom.hint-fade no delay
+					span(simple-hint="This is a simple hint").hint-top.hint-fade-d-short 0.5 second delay
+					span(simple-hint="This is a simple hint").hint-bottom.hint-fade-d-med 1 second delay
+					span(simple-hint="This is a simple hint").hint-top.hint-fade-d-long 2 second delay
+
+				div
+					span(simple-hint="This is a simple hint").hint-bottom.hint-anim no delay
+					span(simple-hint="This is a simple hint").hint-bottom.hint-anim-d-short 0.5s delay
+					span(simple-hint="This is a simple hint").hint-top.hint-anim-d-med 1s delay
+					//- span(simple-hint="This is a simple hint").hint-bottom.hint-anim-d-long 2s delay
+					//- span(simple-hint="This is a simple hint").hint-top.hint-fade-d-short 0.5 second delay
+					//- span(simple-hint="This is a simple hint").hint-bottom.hint-fade-d-med 1 second delay
+					//- span(simple-hint="This is a simple hint").hint-top.hint-fade-d-long 2 second delay
+
+			//- .box
 				h2 Size
 				div
 					span(simple-hint="Lorem ipsum Veniam deserunt culpa mollit nisi Excepteur irure dolor sunt aliqua velit culpa qui consectetur laborum culpa id culpa et consectetur irure nostrud veniam nisi cupidatat sit in irure elit exercitation veniam magna esse consequat in.").hint-top.hint-big Hover over me
@@ -78,3 +101,16 @@ html
 				| consectetur eu do ea id in magna proident aliqua voluptate 
 				span(simple-hint="Wow, who knew?").hint-top reprehenderit 
 				| mollit. Lorem ipsum Sint Ut dolore enim voluptate velit. Lorem ipsum Irure incididunt dolore eu.
+
+
+			.test
+				button click meh
+				div There is some text in this div
+
+
+			script(src="https://code.jquery.com/jquery-2.1.1.min.js")
+
+			script.
+				$('button').on('click', function(){
+					$(this).siblings().toggleClass('activate')
+				})

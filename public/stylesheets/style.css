@@ -642,7 +642,7 @@ h2 {
       width: 100%; }
 
 .box {
-  max-width: 400px;
+  max-width: 450px;
   margin: 60px auto; }
   .box div {
     position: relative; }
@@ -668,3 +668,20 @@ h2 {
   .text span {
     border-bottom: 1px dashed #f39c12;
     line-height: 2.8rem; }
+
+.test {
+  margin: 150px; }
+  .test div {
+    display: inline-block;
+    background: #292929;
+    padding: 6px;
+    line-height: 1.8rem;
+    color: white;
+    margin-top: 30px;
+    opacity: 0;
+    transition: 0.3s ease;
+    font-size: 1.1rem;
+    transform: translateY(50%); }
+
+.activate {
+  opacity: 1 !important; }

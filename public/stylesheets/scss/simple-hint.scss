@@ -1,6 +1,11 @@
 /*! Simple Hint v1.0 | Copyright (c) 2014 Catalin Covic | https://github.com/catc */
 
 
+@mixin prefix($name, $argument) {
+	-webkit-#{$name}: #{$argument};
+	-moz-#{$name}: #{$argument};
+	#{$name}: #{$argument};
+}
 @mixin transition($content...) {
 	-webkit-transition : $content;
 	-moz-transition    : $content;
@@ -12,7 +17,7 @@
 	-ms-transform     : $content;
 	transform         : $content;
 }
-@mixin animation ($content...) {
+@mixin animation($content...) {
 	-webkit-animation : $content;
 	-moz-animation    : $content;
 	animation         : $content;
@@ -38,12 +43,14 @@ $def: #292929;
 		pointer-events: none;
 		position: absolute;
 
-		opacity: 0;
+		// opacity: 0;
+		visibility: hidden;
 	}
 
 	&:hover {
 		&:after, &:before {
-			opacity: 1;
+			// opacity: 1;
+			visibility: visible;
 		}
 	}
 
@@ -58,7 +65,7 @@ $def: #292929;
 		text-align: center;
 		padding: 3px 7px;
 		font-size: 1.1rem;
-		line-height: 1.9em;
+		line-height: 1.8em;
 		border-radius: 2px;
 		z-index: 9999;
 		color: white;
@@ -117,6 +124,7 @@ $def: #292929;
 	}
 	&:after {
 		top: 50%;
+		@include transform(translateY(-50%));
 	}
 }
 
@@ -129,9 +137,11 @@ $def: #292929;
 	&:after {
 		// left: -100%;
 		// @include transform(translate(50%, -50%));
-		margin-left: -10px;
-		left: 0;
-		transform: translate(-100%, -50%);
+		right: 100%;
+		margin-right: 10px;
+		// left: 0;
+		// transform: translate(-100%, -50%);
+
 	}
 }
 
@@ -140,40 +150,136 @@ $def: #292929;
 		border-right-color: $def;
 		right: 0;
 		margin-right: -10px;
+		// left: 100%;
 	}
 	&:after {
-		// right: -100%;
-		// @include transform(translate(-50%, -50%));
-
-		// margin-right: -10px;
-		// right: 0;
-		// transform: translate(100%, -50%);
-
-
 		left: 100%;
-		transform: translateY(-50%);
 		margin-left: 10px;
+
+
 	}
 }
 
-
-// opacity fade
-.hint-fade {
-	&:before, &:after {
-		@include transition(opacity 0.3s ease);
-	}
-}
 
 // persist
 .hint-persist {
 	&:before, &:after {
-		opacity: 1;
+		// opacity: 1;
+		visibility: visible;
 	}
 }
-
-
 
 // sizing
 .hint-small:after { width: 200px; }
 .hint-med:after { width: 300px; }
 .hint-big:after { width: 450px; }
+
+
+// opacity fade + delay
+[class*="hint-fade"] {
+	&:before, &:after {
+		@include transition(opacity 0.5s ease);
+		opacity: 0;
+	}
+	&:hover:before, &:hover:after{
+		opacity: 1;
+	}
+
+	// delay
+	&[class*="-d-short"] {
+		&:hover:before, &:hover:after {
+			@include prefix(transition-delay, 0.5s)
+		}
+	}
+
+	&[class*="-d-med"] {
+		&:hover:before, &:hover:after {
+			@include prefix(transition-delay, 1s)
+		}
+	}
+
+	&[class*="-d-long"] {
+		&:hover:before, &:hover:after {
+			@include prefix(transition-delay, 2s)
+		}
+	}
+}
+
+
+// animation keyframes
+@include keyframes(top){
+	from { 
+		bottom: 125%; 
+		opacity: 0;
+	}
+	
+}
+@include keyframes(bottom){
+	from { 
+		top: 125%;
+		opacity: 0;
+	}
+}
+@include keyframes(right){
+	from {
+		margin-right: -35px;
+		margin-left: 35px;
+		opacity: 0;
+	}
+}
+@include keyframes(left){
+	from {
+		margin-left: -35px;
+		margin-right: 35px;
+		opacity: 0;
+	}
+}
+
+// animation + delay
+[class*="hint-anim"] {
+	&:after, &:before {
+		@include prefix(animation-fill-mode, both);
+		@include prefix(animation-duration, 0.3s);
+		@include prefix(animation-timing-function, ease);
+	}
+
+	&.hint-top {
+		&:hover:before, &:hover:after {
+			@include prefix(animation-name, top);
+		}
+	}
+	&.hint-bottom {
+		&:hover:before, &:hover:after {
+			@include prefix(animation-name, bottom);
+		}
+	}
+	&.hint-left {
+		&:hover:before, &:hover:after {
+			@include prefix(animation-name, left);
+		}
+	}
+	&.hint-right {
+		&:hover:before, &:hover:after {
+			@include prefix(animation-name, right);
+		}
+	}
+
+	// delay
+	&[class*="-d-short"] {
+		&:before, &:after {
+			@include prefix(animation-delay, 0.5s);
+		}
+	}
+	&[class*="-d-med"] {
+		&:before, &:after {
+			@include prefix(animation-delay, 1s);
+		}
+	}
+	&[class*="-d-long"] {
+		&:before, &:after {
+			@include prefix(animation-delay, 2s);
+		}
+	}
+}
+
+
