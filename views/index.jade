@@ -1,0 +1,80 @@
+doctype html
+html
+	head
+		title Simple Hint
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		
+		link(href='http://fonts.googleapis.com/css?family=Montserrat|Roboto:400,700,300' rel='stylesheet' type='text/css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/simple-hint.css')
+
+	body
+		#container
+			h1 Simple Hint
+
+
+			.box
+				h2 Simple
+				div
+					span(simple-hint="This is a simple hint").hint-top Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-left Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-right Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-bottom Hover over me
+
+			.box
+				h2 Opacity fade
+				div
+					span(simple-hint="This is a simple hint").hint-top.hint-fade Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-left.hint-fade Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-right.hint-fade Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-bottom.hint-fade Hover over me
+
+			.box
+				h2 Persistent
+				div
+					span(simple-hint="This is a simple hint").hint-top.hint-persist Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-left.hint-persist Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-right.hint-persist Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-bottom.hint-persist Hover over me
+
+			.box
+				h2 Animated
+				div
+					span(simple-hint="This is a simple hint").hint-top.hint-anim Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-left.hint-anim Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-right.hint-anim Hover over me
+				div
+					span(simple-hint="This is a simple hint").hint-bottom.hint-anim Hover over me
+
+			.box
+				h2 Size
+				div
+					span(simple-hint="Lorem ipsum Veniam deserunt culpa mollit nisi Excepteur irure dolor sunt aliqua velit culpa qui consectetur laborum culpa id culpa et consectetur irure nostrud veniam nisi cupidatat sit in irure elit exercitation veniam magna esse consequat in.").hint-top.hint-big Hover over me
+				div
+					span(simple-hint="Lorem ipsum Cillum voluptate adipisicing id officia elit fugiat qui ex nulla enim aliqua tempor.").hint-left.hint-med Hover over me
+				div
+					span(simple-hint="Lorem ipsum Proident consectetur minim Ut ad fugiat est velit ut commodo nulla ea non sunt cupidatat sed.").hint-right.hint-small Hover over me
+				div
+					span(simple-hint="Lorem ipsum Commodo ullamco exercitation sed elit officia proident reprehenderit eiusmod est mollit dolore aute.").hint-bottom.hint-med Hover over me
+
+
+			.text
+				| Lorem ipsum Cupidatat in elit consectetur 
+				span(simple-hint="How fascinating!").hint-bottom nisi quis 
+				| dolore proident fugiat reprehenderit consectetur ut ullamco aliqua pariatur aute 
+				span(simple-hint="This is simply extraordinary").hint-left ullamco 
+				| consectetur eu do ea id in magna proident aliqua voluptate 
+				span(simple-hint="Wow, who knew?").hint-top reprehenderit 
+				| mollit. Lorem ipsum Sint Ut dolore enim voluptate velit. Lorem ipsum Irure incididunt dolore eu.

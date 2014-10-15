@@ -1,0 +1,179 @@
+/*! Simple Hint v1.0 | Copyright (c) 2014 Catalin Covic | https://github.com/catc */
+
+
+@mixin transition($content...) {
+	-webkit-transition : $content;
+	-moz-transition    : $content;
+	transition         : $content;
+}
+@mixin transform ($content...) {
+	-webkit-transform : $content;
+	-moz-transform    : $content;
+	-ms-transform     : $content;
+	transform         : $content;
+}
+@mixin animation ($content...) {
+	-webkit-animation : $content;
+	-moz-animation    : $content;
+	animation         : $content;
+}
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+$def: #292929;
+
+
+[simple-hint] {
+	&:after, &:before {
+		display: inline-block;
+		pointer-events: none;
+		position: absolute;
+
+		opacity: 0;
+	}
+
+	&:hover {
+		&:after, &:before {
+			opacity: 1;
+		}
+	}
+
+	&:before {
+		content: "";
+		border: 5px solid transparent;
+		z-index: 9998;
+	}
+
+	&:after {
+		content: attr(simple-hint);
+		text-align: center;
+		padding: 3px 7px;
+		font-size: 1.1rem;
+		line-height: 1.9em;
+		border-radius: 2px;
+		z-index: 9999;
+		color: white;
+
+		// white-space: nowrap;
+		word-wrap: break-word;
+		white-space: pre;
+
+		background: $def;
+	}
+}
+
+.hint-bottom, .hint-top {
+	&:before {
+		right: 50%;
+		margin-right: -5px;
+	}
+	&:after {
+		left: 50%;
+		@include transform( translateX(-50%));
+	}
+}
+
+.hint-bottom {
+	&:before {
+		border-bottom-color: $def;
+		// bottom: -10px;
+		top: 100%;
+	}
+	&:after {
+		margin-top: 9px;
+		top: 100%;
+	}
+}
+
+.hint-top {
+	&:before {
+		border-top-color: $def;
+		// top: -10px;
+		bottom: 100%;
+	}
+	&:after {
+		bottom: 100%;
+		margin-bottom: 9px;
+		// bottom: 100%;
+		// margin-bottom: 10px;
+
+	}
+}
+
+
+.hint-left, .hint-right {
+	&:before {
+		top: 50%;
+		margin-top: -5px;
+	}
+	&:after {
+		top: 50%;
+	}
+}
+
+.hint-left {
+	&:before {
+		border-left-color: $def;
+		left: 0;
+		margin-left: -10px;
+	}
+	&:after {
+		// left: -100%;
+		// @include transform(translate(50%, -50%));
+		margin-left: -10px;
+		left: 0;
+		transform: translate(-100%, -50%);
+	}
+}
+
+.hint-right {
+	&:before {
+		border-right-color: $def;
+		right: 0;
+		margin-right: -10px;
+	}
+	&:after {
+		// right: -100%;
+		// @include transform(translate(-50%, -50%));
+
+		// margin-right: -10px;
+		// right: 0;
+		// transform: translate(100%, -50%);
+
+
+		left: 100%;
+		transform: translateY(-50%);
+		margin-left: 10px;
+	}
+}
+
+
+// opacity fade
+.hint-fade {
+	&:before, &:after {
+		@include transition(opacity 0.3s ease);
+	}
+}
+
+// persist
+.hint-persist {
+	&:before, &:after {
+		opacity: 1;
+	}
+}
+
+
+
+// sizing
+.hint-small:after { width: 200px; }
+.hint-med:after { width: 300px; }
+.hint-big:after { width: 450px; }

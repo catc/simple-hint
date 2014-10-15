@@ -1,0 +1,228 @@
+/* = Variables
+-------------------------------------------------------------- */
+
+/* fonts */
+$font1: "Montserrat", sans-serif;
+$font2: "Roboto", sans-serif;
+
+
+/* colors */
+
+// shades of black
+$b1: #111;
+$b2: #222;
+$b3: #444;
+$b4: #666;
+$b5: #aaa;
+$b6: #ddd;
+$b7: #ededed;
+$white: #fff;
+
+// http://clrs.cc
+$c-aqua:  #7FDBFF;
+$c-blue:  #0074D9;
+$c-navy:  #001F3F;
+$c-teal:  #39CCCC;
+$c-green: #2ECC40;
+$c-olive: #3D9970;
+$c-lime:  #01FF70;
+
+$c-yellow:  #FFDC00;
+$c-orange:  #FF851B;
+$c-red:     #FF4136;
+$c-fuchsia: #F012BE;
+$c-purple:  #B10DC9;
+$c-maroon:  #85144B;
+
+$c-gray: #aaaaaa;
+$c-silver: #dddddd;
+
+// windows 8 color schemes
+$w-grey: #242424;
+$w-yellow: #F2B21B;
+$w-green: #76BA43;
+$w-blue: #436FB6;
+$w-red: #AE1D3F; 
+
+$w-brown: #613111;
+$w-brown2: #2C1A0D;
+$w-red2: #B62524;
+$w-red3: #491111;
+$w-fuschia: #C11E52;
+$w-fuschia2: #4C0737;
+$w-purple: #6D3393;
+$w-purple2: #2C124D;
+$w-purple3: #4D3D98;
+$w-purple4: #252063;
+$w-blue2: #206AB4;
+$w-blue3: #15214C;
+$w-turquoise: #008287;
+$w-turquoise2: #034D60;
+$w-emerald: #1B9947;
+$w-emerald2: #1F4A23;
+$w-green2: #34B44A;
+$w-green3: #199947;
+$w-orange: #F89723;
+$w-orange2: #E36C25;
+$w-red4: #EE3823;
+$w-red5: #B72025;
+$w-pink: #ED2977;
+$w-pink2: #B71F6C;
+$w-purple5: #8459A4;
+$w-purple6: #663F98;
+$w-aqua: #4CA7DD;
+$w-aqua2: #2B5BA9;
+$w-aqua3: #66C0ED;
+$w-aqua4: #5C9AD3;
+$w-seaspray: #4AC1BE;
+$w-seaspray2: #00A9A9;
+$w-lgreen: #92C83D;
+$w-lgreen2: #83BA40;
+$w-yellow2: #E1B923;
+$w-yellow3: #D19D2A;
+$w-pink3: #F178AE;
+$w-pink4: #D467A7;
+
+$w-turquoise3: #00A4A4;
+$w-orange3: #F47B28;
+$w-grey2: #696969;
+
+
+
+// flat ui
+$f-turqouise: #1abc9c;
+$f-green-sea: #16a085;
+$f-emerald: #2ecc71;
+$f-nephritis: #27ae60;
+$f-peter-river: #3498db;
+$f-belize-hole: #2980b9;
+$f-ametyhs: #9b59b6;
+$f-wisteria: #8e44ad;
+$f-wet-asphalt: #34495e;
+$f-midnight-blue: #2c3e50;
+$f-sun-flower: #f1c40f;
+$f-orange: #f39c12;
+$f-carrot: #e67e22;
+$f-pumpkin: #d35400;
+$f-alizarin: #e74c3c;
+$f-pomegranate: #c0392b;
+$f-clouds: #ecf0f1;
+$f-silver: #bdc3c7;
+$f-concrete: #95a5a6;
+$f-asbestos: #7f8c8d;
+
+
+
+/**
+	Other resources
+		http://colourco.de/
+
+**/
+
+
+/* media query breakpoints */
+$bsmall: 480px;
+$bmed: 767px;
+$bbig: 979px;
+$blarge: 1200px;
+$bhuge: 1600px;
+
+$btablet: 1024px;
+
+/* = Mixins
+-------------------------------------------------------------- */
+
+// grid setup
+@mixin grid_setup () {
+    @for $i from 1 through $grid_total_parts {
+        .col_#{$i} {
+            width:( (100*$i + $i*$grid_spacing - $grid_total_parts*$grid_spacing)/$grid_total_parts)  *1%;
+        } 
+    }
+    .col_#{$grid_total_parts} { margin-left: 0 !important; }
+}
+
+// media queries
+@mixin respond-to($mediaq) {
+	@if $mediaq == phone {				// to 480px
+		@media only screen and (max-width : $bsmall) { @content; }
+	}
+	@else if $mediaq == tablet {		// to 767
+		@media only screen and (max-width : $bmed) { @content; }
+	}
+	@else if $mediaq == computer1 {		// 768 - 979
+		@media only screen and ( min-width: $bmed + 1 ) and ( max-width : $bbig) { @content; }
+	} 		
+	@else if $mediaq == nontablet {		// 1025+ (bigger than ipads)
+		@media only screen and (min-width : $btablet + 1 ) { @content; }
+	}
+	@else if $mediaq == computer2 {		// 980 - 1199
+		@media only screen and (min-width : $bbig + 1) and ( max-width : $blarge - 1) { @content; }
+	}
+	@else if $mediaq == computer3 {		// 1200+
+		@media only screen and (min-width : $blarge) { @content; }
+	}
+	@else if $mediaq == huge {			// 1600+
+		@media only screen and (min-width : $bhuge) { @content; }
+	}
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content};
+  :-moz-placeholder           {@content};
+  ::-moz-placeholder          {@content};
+  :-ms-input-placeholder      {@content};
+}
+// call using: 		@include placeholder { // include font style, color, weight }
+
+@mixin transition($content...) {
+	-webkit-transition : $content;
+	-moz-transition    : $content;
+	transition         : $content;
+}
+
+@mixin transform ($content...) {
+	-webkit-transform : $content;
+	-moz-transform    : $content;
+	-ms-transform     : $content;
+	transform         : $content;
+}
+
+@mixin animation ($content...) {
+	-webkit-animation : $content;
+	-moz-animation    : $content;
+	animation         : $content;
+}
+
+
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+/*  call by: 
+
+@include keyframes( NAME ) { 
+	// anything you want animated, eg:
+	from { color: red; }
+	to { color: blue; }
+
+	// or
+	o% { color: red; }
+	100% { background: 100% }
+}
+
+ */
+
+
+@mixin box-sizing($box-model) {
+	-webkit-box-sizing : $box-model; // Safari <= 5
+	-moz-box-sizing    : $box-model; // Firefox <= 19
+	box-sizing         : $box-model;
+}

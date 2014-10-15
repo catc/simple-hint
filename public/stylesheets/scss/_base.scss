@@ -1,0 +1,18 @@
+
+// normalize : https://github.com/necolas/normalize.css/
+@import "base/normalize";
+
+// variables + custom mixins
+@import "base/variables";
+
+// set globals (body, headings, p, span, ul, li, etc.)
+@import "base/global";
+
+// extra styling (button + input resets, sticky footer, mozilla specific settings)
+@import "base/extra";
+
+// sets up grid
+@import "base/grid";
+
+
+

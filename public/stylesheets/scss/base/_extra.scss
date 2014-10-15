@@ -1,0 +1,106 @@
+/* = Extra
+----------------------------------------------- */
+
+/* links */
+a {
+	color: $c-blue;
+	&:link, &:hover, &:focus, &:visited {
+		//color:inherit;
+		text-decoration: none;
+	}
+}
+
+/* remove outlines from firefox */
+button::-moz-focus-inner {
+	// border: 0;       
+}
+:link:focus, :visited:focus { 
+	// -moz-outline: none; 
+}
+
+
+/* clearfixes  */
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+
+/* mobile */
+* {
+	// -webkit-tap-highlight-color: transparent;
+}
+
+
+
+/* other */
+*,
+*:after,
+*::before {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* button reset */
+button {
+	// border: none;
+	// background:none;
+	// box-shadow: none;
+	// text-shadow: none;
+	&:hover, &:focus, &:active {
+		// border: none;
+		// background:none;
+		// outline: none;
+	}
+}
+
+/* input reset */
+input {
+	// box-shadow: none;
+	// border: none;
+	// background: transparent;
+	&:focus { 
+		// outline: none;
+	}
+}
+
+
+/* sticky footer */
+/* info -- http://getbootstrap.com/examples/sticky-footer/
+wrap main content in #wrap
+have footer you want sticky
+*/
+
+/* 
+$sfooter: 60px;                     // set to height of footer
+
+html, body {
+	height: 100%;
+	margin: 0;
+}
+#wrap {
+	min-height: 100%;
+	height: auto;
+	margin: 0 auto -1*$sfooter;
+	padding: 1px 0 $sfooter;        // 1px set to contain any margins
+}
+footer {
+	padding: 1px;                   // minimum - to contain any margins
+	background: $b5;
+	height: $sfooter;
+}
+*/
+
+

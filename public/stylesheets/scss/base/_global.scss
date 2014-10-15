@@ -1,0 +1,127 @@
+/* = Global
+----------------------------------------------- */
+
+html {
+    font-size: 62.5%; 					
+    overflow-y: scroll; 				
+    -webkit-text-size-adjust: 100%; 	
+    -ms-text-size-adjust: 100%; 		
+}
+
+body, div, p, a, span, button, input, select, textarea, ul, ol, li, code {
+	font-family: $font1;
+	font-weight: 400;				
+	font-size: 14px;
+	font-size: 1.4rem;
+	color: $b3;			// default color
+}
+
+// headings
+h1,h2,h3,h4,h5,h6 {
+	font-family: $font1;
+	line-height: 2rem;
+	text-rendering: optimizelegibility;
+	-webkit-font-smoothing: antialiased;
+	margin: 10px auto;
+}
+h1, h2, h3 { line-height: 4rem;	}
+h1 {
+	font-size: 4.6rem;
+	font-family: $font1;
+	font-weight: bold;
+}
+h2 {
+	font-size: 4rem;
+	font-weight: bold;
+}
+h3 { font-size: 3.4rem; }
+h4 { font-size: 2.4rem; }
+h5 { font-size: 1.8rem; }
+h6 { font-size: 1.4rem; }
+
+
+// lists
+ul, ol {
+	margin: 0;
+	padding: 0;
+}
+ol {
+	list-style: decimal;
+}
+li {
+	margin-left: 1.8em;
+}
+li > ul,
+li > ol {
+	margin-bottom: 0;
+	margin-left: 0.4em;
+}
+
+
+// code
+pre {
+	background: #eee;
+	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-size: 15px;
+	font-size: 1.5rem;
+	line-height: 1.6;
+	margin-bottom: 1.6em;
+	padding: 1.6em;
+	overflow: auto;
+	max-width: 100%;
+}
+code, kbd, tt, var {
+	font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+// images
+img {
+	height: auto; 
+	max-width: 100%; 
+	vertical-align: middle;
+  	display: block;	
+}
+
+// forms + buttons
+button, input, select, textarea {
+	font-size: 100%; 
+	margin: 0; 
+	vertical-align: baseline; 
+	vertical-align: middle; 
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+	cursor: pointer; 
+	-webkit-appearance: button; 
+}
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	display: none;
+}
+button, input {
+	line-height: normal;
+}
+
+// Corrects inner padding and border displayed oddly in FF3/4 
+button::-moz-focus-inner, input::-moz-focus-inner { 
+	border: 0;
+	padding: 0;
+}
+
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"] {
+	padding: 3px;
+}
+
+textarea {
+	// removes default vertical scrollbar in IE6/7/8/9
+	overflow: auto; 
+	vertical-align: top; 
+	// improves readability and alignment in all browsers
+	padding-left: 3px;
+	// fit container
+	width: 100%;
+	max-width: 100%;
+}
+
+// make sure embeds and iframes fit their containers
+embed, iframe, object { max-width: 100%; }

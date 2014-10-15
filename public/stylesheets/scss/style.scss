@@ -1,0 +1,95 @@
+/* Clean SCSS Slate v1.0 | Copyright (c) 2014 Catalin Covic | https://github.com/catc */
+
+@import "base";
+
+
+// ...
+
+body {
+
+	// background: red;
+}
+
+span {
+	position: relative;
+}
+
+[simple-hint] {
+	&:after {
+		font-family: $font1;
+		
+	}
+}
+
+h2 {
+	font-size: 2.2rem;
+}
+
+.box2 {
+	max-width: 400px;
+	// background: red;
+	padding: 10px;
+	margin: 60px auto 0;
+	span {
+		position: relative;
+		display: inline-block;
+		width: 50%;
+		text-align: center;
+		margin: 15px 0;
+		padding: 8px;
+		cursor: pointer;
+		background: red;
+		// font-family: $font2;
+
+		&:nth-of-type(2){ 
+			// float: left;
+			text-align: left;
+		}
+		&:nth-of-type(3){ 
+			// float: right;
+			text-align: right;
+		}
+		&:first-child, &:last-child {
+			display: block;
+			width: 100%;
+		}
+	}
+}
+
+.box {
+	max-width: 400px;
+	margin: 60px auto;
+
+	div {
+		&:nth-of-type(2){
+			width: 50%;
+			display: inline-block;
+		}
+		&:nth-of-type(3){
+			width: 50%;
+			display: inline-block;
+			text-align: right;
+		}
+		&:last-of-type, &:first-of-type {
+			text-align: center;
+		}
+
+		position: relative;
+	}
+	span {
+		margin: 10px 0;
+		padding: 5px;
+		display: inline-block;
+		cursor: pointer;
+		position: relative;
+	}
+}
+
+.text {
+	max-width: 500px;
+	margin: 60px auto;
+	span {
+		border-bottom: 1px dashed $f-orange;
+		line-height: 2.8rem;
+	}
+}
