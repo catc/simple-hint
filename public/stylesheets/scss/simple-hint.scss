@@ -78,7 +78,7 @@ $def: #292929;
 	}
 }
 
-.hint-bottom, .hint-top {
+[class*="hint-bottom"], [class*="hint-top"] {
 	&:before {
 		right: 50%;
 		margin-right: -5px;
@@ -89,7 +89,7 @@ $def: #292929;
 	}
 }
 
-.hint-bottom {
+[class*="hint-bottom"] {
 	&:before {
 		border-bottom-color: $def;
 		// bottom: -10px;
@@ -101,7 +101,7 @@ $def: #292929;
 	}
 }
 
-.hint-top {
+[class*="hint-top"] {
 	&:before {
 		border-top-color: $def;
 		// top: -10px;
@@ -117,7 +117,7 @@ $def: #292929;
 }
 
 
-.hint-left, .hint-right {
+[class*="hint-left"], [class*="hint-right"] {
 	&:before {
 		top: 50%;
 		margin-top: -5px;
@@ -128,7 +128,7 @@ $def: #292929;
 	}
 }
 
-.hint-left {
+[class*="hint-left"] {
 	&:before {
 		border-left-color: $def;
 		left: 0;
@@ -145,7 +145,7 @@ $def: #292929;
 	}
 }
 
-.hint-right {
+[class*="hint-right"] {
 	&:before {
 		border-right-color: $def;
 		right: 0;
@@ -164,15 +164,39 @@ $def: #292929;
 // persist
 .hint-persist {
 	&:before, &:after {
-		// opacity: 1;
 		visibility: visible;
 	}
 }
 
 // sizing
-.hint-small:after { width: 200px; }
-.hint-med:after { width: 300px; }
-.hint-big:after { width: 450px; }
+[class*="hint-"][class*="-s-small"]:after {
+	width: 200px;
+}
+[class*="hint-"][class*="-s-med"]:after {
+	width: 300px;
+}
+[class*="hint-"][class*="-s-big"]:after {
+	width: 450px;
+}
+
+
+// delay on default hints
+.hint-d-short {
+	&:hover:after, &:hover:before {
+		@include transition(visibility 0s 0.5s ease);
+	}
+}
+.hint-d-med {
+	&:hover:after, &:hover:before {
+		@include transition(visibility 0s 1s ease);
+	}
+}
+.hint-d-long {
+	&:hover:after, &:hover:before {
+		@include transition(visibility 0s 2s ease);
+	}
+}
+
 
 
 // opacity fade + delay
@@ -248,7 +272,7 @@ $def: #292929;
 			@include prefix(animation-name, top);
 		}
 	}
-	&.hint-bottom {
+	&[class*="hint-bottom"] {
 		&:hover:before, &:hover:after {
 			@include prefix(animation-name, bottom);
 		}
@@ -283,3 +307,91 @@ $def: #292929;
 }
 
 
+// mobile
+[class*="hint-"][class*="-mobile"] {
+	&:after, &:before {
+		@media only screen and (max-width : 768px) { 
+			display: none;
+		}
+		
+	}
+}
+
+
+$info: #44C2F9;
+$success: #83C510;
+$error: #FF4C4C;
+$notice: #FFAE00;
+
+// types
+[class*="hint-"][class*="-t-info"] {
+	&[class*="hint-bottom"]:before{
+		border-bottom-color: $info;
+	}
+	&[class*="hint-top"]:before{
+		border-top-color: $info;
+	}
+	&[class*="hint-right"]:before{
+		border-right-color: $info;
+	}
+	&[class*="hint-left"]:before{
+		border-left-color: $info;
+	} 
+	&:after {
+		background: $info;
+	}
+}
+
+[class*="hint-"][class*="-t-success"] {
+	&[class*="hint-bottom"]:before{
+		border-bottom-color: $success;
+	}
+	&[class*="hint-top"]:before{
+		border-top-color: $success;
+	}
+	&[class*="hint-right"]:before{
+		border-right-color: $success;
+	}
+	&[class*="hint-left"]:before{
+		border-left-color: $success;
+	} 
+	&:after {
+		background: $success;
+	}
+}
+
+[class*="hint-"][class*="-t-error"] {
+	&[class*="hint-bottom"]:before{
+		border-bottom-color: $error;
+	}
+	&[class*="hint-top"]:before{
+		border-top-color: $error;
+	}
+	&[class*="hint-right"]:before{
+		border-right-color: $error;
+	}
+	&[class*="hint-left"]:before{
+		border-left-color: $error;
+	} 
+	&:after {
+		background: $error;
+	}
+}
+
+[class*="hint-"][class*="-t-notice"] {
+	&[class*="hint-bottom"]:before{
+		border-bottom-color: $notice;
+	}
+	&[class*="hint-top"]:before{
+		border-top-color: $notice;
+	}
+	&[class*="hint-right"]:before{
+		border-right-color: $notice;
+	}
+	&[class*="hint-left"]:before{
+		border-left-color: $notice;
+	} 
+	&:after {
+		background: $notice;
+	}
+}

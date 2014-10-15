@@ -76,11 +76,32 @@ html
 					span(simple-hint="This is a simple hint").hint-bottom.hint-anim no delay
 					span(simple-hint="This is a simple hint").hint-bottom.hint-anim-d-short 0.5s delay
 					span(simple-hint="This is a simple hint").hint-top.hint-anim-d-med 1s delay
-					//- span(simple-hint="This is a simple hint").hint-bottom.hint-anim-d-long 2s delay
+					span(simple-hint="This is a simple hint").hint-bottom.hint-anim-d-long 2s delay
+
+				div
+					span(simple-hint="This is a simple hint").hint-bottom no delay
+					span(simple-hint="This is a simple hint").hint-bottom.hint-d-short delay
+					span(simple-hint="This is a simple hint").hint-bottom.hint-d-med delay
+
+				div
+					span(simple-hint="This is a simple hint").hint-top regular
+					span(simple-hint="This is a simple hint").hint-top.hint-mobile mobile
+
+				div
+					span(simple-hint="This is a simple hint").hint-left-t-info.hint-persist info
+					span(simple-hint="This is a simple hint").hint-right-t-success.hint-persist success
+					br
+					span(simple-hint="This is a simple hint").hint-left-t-error.hint-persist error
+					span(simple-hint="This is a simple hint").hint-right-t-notice.hint-persist notice
 					//- span(simple-hint="This is a simple hint").hint-top.hint-fade-d-short 0.5 second delay
 					//- span(simple-hint="This is a simple hint").hint-bottom.hint-fade-d-med 1 second delay
 					//- span(simple-hint="This is a simple hint").hint-top.hint-fade-d-long 2 second delay
-
+				div
+					span(simple-hint="This is a simple hint").hint-bottom.hint-anim notice
+					span(simple-hint="This is a simple hint").hint-bottom-t-error.hint-anim notice
+					span(simple-hint="This is a simple hint").hint-bottom-t-notice.hint-anim-d-med notice
+				div
+					span(simple-hint="This is a simple hint").hint-bottom-s-med-t-error.hint-anim notice
 			//- .box
 				h2 Size
 				div
@@ -103,14 +124,14 @@ html
 				| mollit. Lorem ipsum Sint Ut dolore enim voluptate velit. Lorem ipsum Irure incididunt dolore eu.
 
 
-			.test
-				button click meh
-				div There is some text in this div
+			//- .test
+			//- 	button click meh
+			//- 	div There is some text in this div
 
 
-			script(src="https://code.jquery.com/jquery-2.1.1.min.js")
+			//- script(src="https://code.jquery.com/jquery-2.1.1.min.js")
 
-			script.
-				$('button').on('click', function(){
-					$(this).siblings().toggleClass('activate')
-				})
+			//- script.
+			//- 	$('button').on('click', function(){
+			//- 		$(this).siblings().toggleClass('activate')
+			//- 	})
