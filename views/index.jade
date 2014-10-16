@@ -5,133 +5,310 @@ html
 		meta(charset="UTF-8")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 		
-		link(href='http://fonts.googleapis.com/css?family=Montserrat|Roboto:400,700,300' rel='stylesheet' type='text/css')
-		link(rel='stylesheet', href='/stylesheets/style.css')
-		link(rel='stylesheet', href='/stylesheets/simple-hint.css')
+		link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css')
+		
+		link(rel='stylesheet', href='stylesheets/style.css')
+		link(rel='stylesheet', href='stylesheets/simple-hint.css')
+
+		link(rel='stylesheet', href='stylesheets/prism.css')
 
 	body
+		.intro
+			#container
+				h1 Simple Hint
+				
+				.intro-items
+					p.
+						Simple-hint is a CSS-only tooltip library. 
+						It uses pseudolements to provide simple, perfectly positioned tooltips.
+						Simple-hint is packed with a variety of features including fade-in transitions and animations, custom sizing, different colors and 
+						<a href="#tldr">more</a>
+						.
+						
+					.intro-box
+						div
+							span(simple-hint="This is a basic hint").hint-top Hover over me
+						div
+							span(simple-hint="This is an 'info' hint with an animation").hint-left-t-info.hint-anim Hover over me
+						div
+							span(simple-hint="This is a 'success' hint that fades in").hint-right-t-success.hint-fade Hover over me
+						div
+							span(simple-hint="This is a 'notice' hint contains alot of text. Lorem ipsum Exercitation ut quis Duis ad dolore ad Duis aute aliquip dolore dolor proident anim quis voluptate ut commodo.").hint-bottom-s-small-t-notice Hover over me
+
+					.downloads
+						a(href="https://github.com/catc/simple-hint/zipball/master") Download .zip
+						a(href="https://github.com/catc/simple-hint") View on Github
+						br
+						.social-media
+							<iframe src="http://ghbtns.com/github-btn.html?user=catc&repo=simple-hint&type=watch&count=true"  allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://catc.github.io/simple-hint/" data-text="CSS-only tooltip packed with a variety of features.">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+							<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcatc.github.io%2Fsimple-hint%2F&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+					
+			.pointer		
+			
 		#container
-			h1 Simple Hint
+			.main
+
+				//- installation
+				h2 Installation
+				p To install, simply include one of simple-hint stylesheets:
+				pre: code.language-markup.
+					&lt;link href="css/simple-hint.css" rel="stylesheet" />
+				p or
+				pre: code.language-markup.
+					&lt;link href="css/simple-hint.min.css" rel="stylesheet" />
+				
+				//- basic usage
+				h2 Basic usage
+				p To get started, use the <code>simple-hint</code> attribute for your text, and then specify the tooltip position by the appropriate class.
+				
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="your message goes here" class="hint-top">Top hint&lt;/span>
+					div: span(simple-hint="your message goes here").hint-top Top hint
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="your message goes here" class="hint-bottom">Bottom hint&lt;/span>
+					div: span(simple-hint="your message goes here").hint-bottom Bottom hint
+				p Available positions are <code>hint-top</code>, <code>hint-bottom</code>, <code>hint-left</code>, <code>hint-right</code>. If there are any issues with tooltip positioning, try adding <code>position: relative;</code> to the element containing the hint.
 
 
-			.box
-				h2 Simple
-				div
-					span(simple-hint="This is a simple hint").hint-top Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-left Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-right Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-bottom Hover over me
+				
+				//- advanced usage
+				h2 Additional features
+				p.
+					Most additional features can be appended to the existing hint class.
+					This helps cut down on the number of classes add to the html tag.
 
-			.box
-				h2 Opacity fade
-				div
-					span(simple-hint="This is a simple hint").hint-top.hint-fade Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-left.hint-fade Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-right.hint-fade Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-bottom.hint-fade Hover over me
+				h3 Sizing
+				p.
+					The sizing feature breaks long text into lines so you don't end up with a long string. 
+					To use sizing, append <code>-s-your_size</code> to the hint positioning class. 
+					Available options are <code>-s-small</code>, <code>-s-med</code>, <code>-s-big</code>
 
-			.box
-				h2 Persistent
-				div
-					span(simple-hint="This is a simple hint").hint-top.hint-persist Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-left.hint-persist Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-right.hint-persist Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-bottom.hint-persist Hover over me
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="lots of text..." class="hint-top-s-small">Small sizing&lt;/span>
+					div: span.hint-top-s-small(simple-hint="Lorem ipsum Velit cillum quis cillum ullamco Duis labore magna quis Excepteur eu eu nulla in qui sint occaecat in.") Small sizing
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="lots of text..." class="hint-top-s-med">Medium sizing&lt;/span>
+					div: span.hint-top-s-med(simple-hint="Lorem ipsum Velit cillum quis cillum ullamco Duis labore magna quis Excepteur eu eu nulla in qui sint occaecat in.") Medium sizing					
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="lots of text..." class="hint-bottom-s-big">Big sizing&lt;/span>
+					div: span.hint-bottom-s-big(simple-hint="Lorem ipsum Velit cillum quis cillum ullamco Duis labore magna quis Excepteur eu eu nulla in qui sint occaecat in.") Big sizing
 
-			.box
-				h2 Animated
-				div
-					span(simple-hint="This is a simple hint").hint-top.hint-anim Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-left.hint-anim Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-right.hint-anim Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-bottom.hint-anim Hover over me
+				h3 Color type
+				p.
+					The color type feature allows you to change your tooltip background color.
+					To specify the type, append <code>-t-your_type</code> to the hint positioning class.
+					Available options are <code>-t-info</code>, <code>-t-success</code>, <code>-t-error</code>, <code>-t-notice</code>
 
-			.box
-				h2 Delay
-				//- div
-				//- 	span(simple-hint="This is a simple hint").hint-top.hint-fade.anim-delay Hover over me
-				//- div
-				//- 	span(simple-hint="This is a simple hint").hint-left.hint-fade.anim-delay Hover over me
-				//- div
-				//- 	span(simple-hint="This is a simple hint").hint-right.hint-fade.anim-delay Hover over me
-				div
-					span(simple-hint="This is a simple hint").hint-bottom.hint-fade no delay
-					span(simple-hint="This is a simple hint").hint-top.hint-fade-d-short 0.5 second delay
-					span(simple-hint="This is a simple hint").hint-bottom.hint-fade-d-med 1 second delay
-					span(simple-hint="This is a simple hint").hint-top.hint-fade-d-long 2 second delay
+				.example2
+					pre: code.language-markup.
+						&lt;span simple-hint="This tooltip type is 'info'" class="hint-top-s-info">Info&lt;/span>
+						 &lt;span simple-hint="This tooltip type is 'success'" class="hint-top-s-success">Success&lt;/span>
+						 &lt;span simple-hint="This tooltip type is 'error'" class="hint-top-s-error">Error&lt;/span>
+						 &lt;span simple-hint="This tooltip type is 'notice'" class="hint-top-s-notice">Notice&lt;/span>
+					div 
+						span(simple-hint="This tooltip type is 'info'").hint-left-t-info Info
+						span(simple-hint="This tooltip type is 'success'").hint-right-t-success Success
+						br
+						span(simple-hint="This tooltip type is 'error'").hint-left-t-error Error
+						span(simple-hint="This tooltip type is 'notice'").hint-right-t-notice Notice
 
-				div
-					span(simple-hint="This is a simple hint").hint-bottom.hint-anim no delay
-					span(simple-hint="This is a simple hint").hint-bottom.hint-anim-d-short 0.5s delay
-					span(simple-hint="This is a simple hint").hint-top.hint-anim-d-med 1s delay
-					span(simple-hint="This is a simple hint").hint-bottom.hint-anim-d-long 2s delay
+				h3 Mobile disable
+				p.
+					You can disable tooltips on mobile (&lt; 768px) by appending <code>-mobile</code> to the hint position class.
+					This is useful for touch devices to prevented unwanted tootips from popping up.
 
-				div
-					span(simple-hint="This is a simple hint").hint-bottom no delay
-					span(simple-hint="This is a simple hint").hint-bottom.hint-d-short delay
-					span(simple-hint="This is a simple hint").hint-bottom.hint-d-med delay
-
-				div
-					span(simple-hint="This is a simple hint").hint-top regular
-					span(simple-hint="This is a simple hint").hint-top.hint-mobile mobile
-
-				div
-					span(simple-hint="This is a simple hint").hint-left-t-info.hint-persist info
-					span(simple-hint="This is a simple hint").hint-right-t-success.hint-persist success
-					br
-					span(simple-hint="This is a simple hint").hint-left-t-error.hint-persist error
-					span(simple-hint="This is a simple hint").hint-right-t-notice.hint-persist notice
-					//- span(simple-hint="This is a simple hint").hint-top.hint-fade-d-short 0.5 second delay
-					//- span(simple-hint="This is a simple hint").hint-bottom.hint-fade-d-med 1 second delay
-					//- span(simple-hint="This is a simple hint").hint-top.hint-fade-d-long 2 second delay
-				div
-					span(simple-hint="This is a simple hint").hint-bottom.hint-anim notice
-					span(simple-hint="This is a simple hint").hint-bottom-t-error.hint-anim notice
-					span(simple-hint="This is a simple hint").hint-bottom-t-notice.hint-anim-d-med notice
-				div
-					span(simple-hint="This is a simple hint").hint-bottom-s-med-t-error.hint-anim notice
-			//- .box
-				h2 Size
-				div
-					span(simple-hint="Lorem ipsum Veniam deserunt culpa mollit nisi Excepteur irure dolor sunt aliqua velit culpa qui consectetur laborum culpa id culpa et consectetur irure nostrud veniam nisi cupidatat sit in irure elit exercitation veniam magna esse consequat in.").hint-top.hint-big Hover over me
-				div
-					span(simple-hint="Lorem ipsum Cillum voluptate adipisicing id officia elit fugiat qui ex nulla enim aliqua tempor.").hint-left.hint-med Hover over me
-				div
-					span(simple-hint="Lorem ipsum Proident consectetur minim Ut ad fugiat est velit ut commodo nulla ea non sunt cupidatat sed.").hint-right.hint-small Hover over me
-				div
-					span(simple-hint="Lorem ipsum Commodo ullamco exercitation sed elit officia proident reprehenderit eiusmod est mollit dolore aute.").hint-bottom.hint-med Hover over me
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="This is hidden on mobile" class="hint-top-mobile">Hidden on mobile&lt;/span>
+					div: span(simple-hint="This is hidden on mobile.").hint-top-mobile Hidden on mobile
+				p.
+					Resize your window to &lt; 768px and hover over the item above. 
+					You can customize the size at which the tooltip is hidden - see the <a href="#customize-mobile">customize section</a>.
 
 
-			.text
-				| Lorem ipsum Cupidatat in elit consectetur 
-				span(simple-hint="How fascinating!").hint-bottom nisi quis 
-				| dolore proident fugiat reprehenderit consectetur ut ullamco aliqua pariatur aute 
-				span(simple-hint="This is simply extraordinary").hint-left ullamco 
-				| consectetur eu do ea id in magna proident aliqua voluptate 
-				span(simple-hint="Wow, who knew?").hint-top reprehenderit 
-				| mollit. Lorem ipsum Sint Ut dolore enim voluptate velit. Lorem ipsum Irure incididunt dolore eu.
+				h3 Tooltip persist
+				p.
+					To persist tooltip visibility,  add the <code>.hint-persist</code> class to the tag. 
+					<strong>NOTE:</strong> this feature requires it's own class - it's not appended to another class.
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="Visible without hovering" class="hint-bottom hint-persist">Persist&lt;/span>
+					div: span(simple-hint="Visible without hovering").hint-bottom.hint-persist Persist
+
+				h3 Fade in
+				p.
+					To apply a fade-in transition, add the <code>hint-fade</code> class to the tag. 
+					<strong>NOTE:</strong> this feature requires it's own class - it's not appended to another class.
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="The tooltip fades in" class="hint-bottom hint-fade">Fade in&lt;/span>
+					div: span(simple-hint="The tooltip fades in").hint-right.hint-fade Fade in					
+
+				h3 Animation
+				p.
+					To apply a move-in animation, add the <code>hint-anim</code> class to the tag. 
+					<strong>NOTE:</strong> this feature requires it's own class - it's not appended to another class.
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="The tooltip is animated" class="hint-bottom hint-anim">Animate&lt;/span>
+					div: span(simple-hint="The tooltip is animated").hint-bottom.hint-anim Animate
 
 
-			//- .test
-			//- 	button click meh
-			//- 	div There is some text in this div
+				h3 Delay
+				p.
+					This feature adds a hover delay before displaying the hint.
+					The available options are <code>-d-short</code> for a 0.5s delay, <code>-d-med</code> for a 1s delay, <code>-d-long</code> for a 2s delay.
+					To add a delay, append the option to either the <code>hint-fade</code> or <code>hint-anim</code> class.
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="This has a 0.5s delay" class="hint-right hint-fade-d-short">Hover for 0.5s for hint&lt;/span>
+					div: span(simple-hint="This has a 0.5s delay").hint-right.hint-fade-d-short Hover for 0.5s for hint
+					pre: code.language-markup.
+						&lt;span simple-hint="This has a 1s delay" class="hint-bottom hint-anim-d-med">Hover for 1s for hint&lt;/span>
+					div: span(simple-hint="This has a 1s delay").hint-bottom.hint-anim-d-med Hover for 1s for hint
+				p.
+					To add a delay to a tooltip that doesn't have a transition/animation (no hint-fade or hint-anim), add the <code>hint-d-your_delay</code> class to the tag.
+				.example
+					pre: code.language-markup.
+						&lt;span simple-hint="This has a 2s delay" class="hint-top hint-d-long">Hover for 2s for hint&lt;/span>
+					div: span(simple-hint="This has a 2s delay").hint-top.hint-d-long Hover for 2s for hint
+
+				h3#tldr tl;dr
+				table
+					tr
+						th Feature
+						th Options
+						th Usage
+					tr
+						td Position
+						td <code>.hint-top</code>, <code>.hint-bottom</code>, <code>.hint-left</code>, <code>.hint-right</code>
+						td individual class
+					tr
+						td Sizing
+						td <code>-s-small</code>, <code>-s-med</code>, <code>-s-big</code>
+						td append to <code>.hint-position</code> class
+					tr
+						td Color type
+						td <code>-t-info</code>, <code>-t-success</code>, <code>-t-error</code>, <code>-t-notice</code>
+						td append to <code>.hint-position</code> class
+					tr
+						td Mobile disable
+						td <code>-mobile</code>
+						td append to <code>.hint-position</code> class
+					tr
+						td Tooltip persist
+						td <code>.hint-persist</code>
+						td individual class
+					tr
+						td Fade in
+						td <code>.hint-fade</code>
+						td individual class
+					tr
+						td Animation
+						td <code>.hint-anim</code>
+						td individual class
+					tr
+						td Delay
+						td <code>-d-short</code>, <code>-d-med</code>, <code>-d-long</code>
+						td append to <code>.hint-fade</code> or <code>.hint-anim</code>  class<br>
+							| if using no transition/animation, add to separate <code>.hint</code> class
 
 
-			//- script(src="https://code.jquery.com/jquery-2.1.1.min.js")
+				h2 Examples
+				p You can use multiple features simultaneously, just append the correct options:
 
-			//- script.
-			//- 	$('button').on('click', function(){
-			//- 		$(this).siblings().toggleClass('activate')
-			//- 	})
+				p Left positioned hint, error type, medium-sized, hidden on mobile, with a 1s delay on fade-in:
+				.example2
+					pre: code.language-markup.
+						&lt;span simple-hint="Lorem ipsum..." class="hint-left-t-error-s-med-mobile hint-anim-d-med">Hover for 1s&lt;/span>
+					div 
+						span(simple-hint="Lorem ipsum Adipisicing pariatur velit Excepteur aliqua ut deserunt dolore tempor eu id reprehenderit.").hint-left-t-error-s-med-mobile.hint-anim-d-med Hover for 1s
+
+				p Simple hint is easy to incorporate in inline text:
+				.text
+					| Lorem ipsum Cupidatat in elit consectetur 
+					span(simple-hint="How fascinating!").hint-bottom nisi quis
+					|  dolore proident fugiat reprehenderit consectetur ut ullamco aliqua pariatur aute 
+					span(simple-hint="This is simply extraordinary!").hint-left ullamco
+					|  consectetur eu do ea id in magna proident aliqua voluptate reprehenderit mollit. Lorem ipsum Sint Ut 
+					span(simple-hint="Wow, who knew?").hint-top dolore
+					|  enim voluptate velit. Lorem ipsum Irure incididunt dolore eu.
+
+				p As well as images if you wrap it in an element that allows pseudolements:
+				.user-example
+					span( simple-hint="Greg Jackson").hint-right-t-info.hint-anim
+						img(src="./images/user.jpg")
+
+				p Lastly, you can use javascript to toggle hint visibility by adding/removing the <conde>hint-persist</code> class.
+				.js-example
+					span(simple-hint="this is a tooltip").hint-bottom#toggle-hint Toggle me
+					button#toggle Toggle visibility
+
+
+				h2 Customizing
+
+				h3 Custom fonts
+				p.
+					The font used on this page is <a href="http://www.google.com/fonts/specimen/Montserrat" target="_blank">Montserrat</a>. 
+					You can set your own font by:
+				pre: code.language-css.
+					[simple-hint]:after {
+						font-family: 'font_name';
+					  }
+				p Depending on the font you use, you may have to experiment with the <code>font-size</code> and <code>line-height</code> to ensure that tooltip text isn't blurry during the fade-in feature.
+
+				h3#customize-mobile Changing the mobile option
+				pre: code.language-css.
+					/* changed 768 to whatever value */
+					@media only screen and (max-width: 768px) {
+						[class*="hint-"][class*="-mobile"]:after, [class*="hint-"][class*="-mobile"]:before {
+							display: none; 
+						} 
+					}
+
+				h3 Custom color types
+				p To set your own color type:
+				pre: code.language-css.
+					[class*="hint-"][class*="-t-custom_type_name"] { /* set a custom name */
+						&[class*="hint-bottom"]:before{
+							border-bottom-color: custom_background_color;
+						}
+						&[class*="hint-top"]:before{
+							border-top-color: custom_background_color;
+						}
+						&[class*="hint-right"]:before{
+							border-right-color: custom_background_color;
+						}
+						&[class*="hint-left"]:before{
+							border-left-color: custom_background_color;
+						} 
+						&:after {
+							background: custom_background_color;
+							color: custom_text_color;
+						}
+					 }
+				p and use it by:
+				pre: code.language-markup.
+					&lt;span simple-hint="lorem ipsum..." class="hint-top-t-custom_type_name">My own type!&lt;/span>
+				h2 Contributing
+				p If you find any bugs, have feature requests, or would like to contribute - either send me a pull request or open a ticket and I'll do my best to follow up on it.
+
+				p Developed and maintained by <a href="https://github.com/catc">Catalin Covic</a> under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>.
+
+
+
+
+	script(src="javascripts/prism.js" type="text/javascript")
+
+	script.
+		function tog(){
+			document.querySelector('#toggle-hint').classList.toggle('hint-persist')
+		}
+		
+		document.querySelector('#toggle').addEventListener('click', tog);

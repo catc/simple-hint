@@ -1,74 +1,80 @@
+
 /* Clean SCSS Slate v1.0 | Copyright (c) 2014 Catalin Covic | https://github.com/catc */
 
 @import "base";
 
+// ....
 
-// ...
 
 body {
 
-	// background: red;
 }
 
-span {
-	position: relative;
-}
+.intro {
+	// @include linear-gradient(45deg, rgb(244,128,132), #FFEDBC);
+	min-height: 100vh;
 
-[simple-hint] {
-	&:after {
-		font-family: $font1;
-		
+	overflow: hidden;
+	border-bottom: 2px solid $w-purple5;
+
+	display: flex;
+
+	#container {
+		display: flex;
+		flex-direction: column;
 	}
+}
+
+.pointer {
+	position: absolute;
+	right: 20px;
+	bottom: 5px;
+	&:after {
+		content: " ";
+		border: 10px solid transparent;
+		border-top-color: $w-purple5;
+	}
+}
+
+h1 {
+	margin-top: 40px;
+	font-size: 3.8rem;
+	text-align: center;
+	color: $w-purple6;
 }
 
 h2 {
 	font-size: 2.2rem;
 }
 
-.box2 {
-	max-width: 400px;
-	// background: red;
-	padding: 10px;
-	margin: 60px auto 0;
-	span {
-		position: relative;
-		display: inline-block;
-		width: 50%;
-		text-align: center;
-		margin: 15px 0;
-		padding: 8px;
-		cursor: pointer;
-		background: red;
-		// font-family: $font2;
+.intro-items {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 1;
 
-		&:nth-of-type(2){ 
-			// float: left;
-			text-align: left;
-		}
-		&:nth-of-type(3){ 
-			// float: right;
-			text-align: right;
-		}
-		&:first-child, &:last-child {
-			display: block;
-			width: 100%;
-		}
+	p {
+		display: block;
+		margin: 30px auto;
+		max-width: 500px;
+		line-height: 2.4rem;
+		color: $b4;
 	}
 }
 
-.box {
-	max-width: 450px;
-	margin: 60px auto;
+.intro-box {
+	text-align: center;
 
 	div {
 		&:nth-of-type(2){
-			width: 50%;
-			display: inline-block;
+			margin-right: 65px;
 		}
 		&:nth-of-type(3){
-			width: 50%;
-			display: inline-block;
 			text-align: right;
+		}
+		&:nth-of-type(2), &:nth-of-type(3){
+			display: inline-block;
+			span { margin: 20px 0;}
 		}
 		&:last-of-type, &:first-of-type {
 			text-align: center;
@@ -81,36 +87,222 @@ h2 {
 		padding: 5px;
 		display: inline-block;
 		cursor: pointer;
-		position: relative;
+		font-size: 1.6rem;
+
+		text-align: center;
+		max-width: 90px;
+		line-height: 2.4rem;
+
+		font-weight: bold;
+		color: $b4;
+		color: $w-purple5;
 	}
 }
 
+.downloads {
+	text-align: center;
+	margin: 50px 0 15px;
+
+	$col: $b3;
+	$col: #353535;
+	$col: $w-purple3;
+	a {
+		display: inline-block;
+		margin-bottom: 40px;
+		text-transform: uppercase;
+		border: 2px solid $col;
+		border-radius: 3px;
+		padding: 6px 10px;
+
+		color: $col;
+		font-weight: bold;
+		letter-spacing: 0.1rem;
+
+		@include transition(0.3s ease);
+
+		&:hover {
+			background: $col;
+			color: white;
+			font-weight: 400;
+		}
+
+		&:first-child {
+			margin-right: 20px;
+		}
+	}
+}
+
+
+
+.social-media {
+	display: block !important;
+
+	iframe {
+		margin-bottom: 10px;
+	}
+	iframe:first-child {
+		width: 90px;
+	}
+	iframe:nth-child(2) {
+		width: 95px !important;
+	}
+	iframe:last-child {
+		width: 125px !important;	
+	}
+}
+
+
+// ----------- main -----------
+
+.main {
+	margin: 60px 0;
+
+	h2 {
+		margin-top: 40px;
+		border-bottom: 2px solid rgb(244, 244, 244);
+	}
+	p {
+		line-height: 3rem;
+		margin: 8px 0;
+	}
+	p + ul {
+		margin-top: -10px;
+	}
+	ul {
+		line-height: 2.2rem;
+	}
+	h3 {
+		font-size: 1.8rem;
+		color: $w-purple5;
+		margin-bottom: -5px;
+	}
+
+
+}
+
+code {
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	background: #CFCCFF;
+	padding: 4px 6px;
+	border-radius: 2px;
+	font-size: 1.3rem;
+
+}
+
+pre code {
+	background: 0;
+	padding: 0.75em;
+	span {
+		padding: 0;
+		font-size: 1.3rem;
+		font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	}
+}
+
+.example {
+	div {
+		width: 250px;
+		display: inline-block;
+		text-align: center;
+		vertical-align: middle;
+	}
+	pre {
+		vertical-align: middle;
+		display: inline-block;
+		width: calc( 100% - 250px);
+	}
+}
+
+.example2 {
+	margin: 15px 0 5px;
+	div {
+		margin: 25px 0 0px; 
+		text-align: center;
+		span {
+			display: inline-block;
+			margin-bottom: 20px;
+			padding: 8px;
+			&:nth-of-type(even) {
+				margin-left: 100px;
+				text-align: right;
+			}
+		}
+	}
+}
+
+.example, .example2 {
+	span {
+		cursor: pointer;
+		font-weight: bold;
+		color: $b4;
+	}
+}
+
+table {
+	margin: 20px 0;
+	width: 100%;
+	border: 2px solid $w-purple5;
+	th {
+		background: #CFCCFF;
+		background: $w-purple5;
+		padding: 10px 4px;
+		color: white;
+		font-size: 1.4rem;
+		font-weight: 400;
+	}
+	td {
+		padding: 7px 8px;
+		line-height: 3.2rem;
+
+	}
+	tr:nth-child(odd) {
+		background: #F6F4FF;
+	}
+}
+
+
 .text {
 	max-width: 500px;
-	margin: 60px auto;
+	margin: 20px auto;
+	line-height: 3rem;
 	span {
-		border-bottom: 1px dashed $f-orange;
+		border-bottom: 2px solid $f-orange;
 		line-height: 2.8rem;
 	}
 }
 
-/* .test {
-	margin: 150px;
-	div {
+.user-example {
+	text-align: center;
+	span {
+		position: relative;
 		display: inline-block;
-		background: #292929;
-		padding: 6px;
-		line-height: 1.8rem;
-		color: white;
-		margin-top: 30px;
-		opacity: 0;
-		transition: 0.3s ease;
-		font-size: 1.1rem;
-
-		transform: translateY(50%);
+	}
+	img {
+		margin: 0 auto;
+		border-radius: 50%;
+		border: 5px solid $w-purple5;
 	}
 }
 
-.activate {
-	opacity: 1 !important;
-} */
+
+span {
+	position: relative;
+}
+
+[simple-hint]:after {
+	font-family: $font1;
+}
+
+
+
+
+
+.js-example {
+	margin: 25px 0;
+	text-align: center;
+	span {
+		margin-right: 80px;
+		font-weight: bold;
+	}
+}
+

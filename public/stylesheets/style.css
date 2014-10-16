@@ -611,81 +611,210 @@ div[class^="col_"] {
     width: device-width; }
  }
 
+.intro {
+  min-height: 100vh;
+  overflow: hidden;
+  border-bottom: 2px solid #8459A4;
+  display: flex; }
+  .intro #container {
+    display: flex;
+    flex-direction: column; }
+
+.pointer {
+  position: absolute;
+  right: 20px;
+  bottom: 5px; }
+  .pointer:after {
+    content: " ";
+    border: 10px solid transparent;
+    border-top-color: #8459A4; }
+
+h1 {
+  margin-top: 40px;
+  font-size: 3.8rem;
+  text-align: center;
+  color: #663F98; }
+
+h2 {
+  font-size: 2.2rem; }
+
+.intro-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1; }
+  .intro-items p {
+    display: block;
+    margin: 30px auto;
+    max-width: 500px;
+    line-height: 2.4rem;
+    color: #666; }
+
+.intro-box {
+  text-align: center; }
+  .intro-box div {
+    position: relative; }
+    .intro-box div:nth-of-type(2) {
+      margin-right: 65px; }
+    .intro-box div:nth-of-type(3) {
+      text-align: right; }
+    .intro-box div:nth-of-type(2), .intro-box div:nth-of-type(3) {
+      display: inline-block; }
+      .intro-box div:nth-of-type(2) span, .intro-box div:nth-of-type(3) span {
+        margin: 20px 0; }
+    .intro-box div:last-of-type, .intro-box div:first-of-type {
+      text-align: center; }
+  .intro-box span {
+    margin: 10px 0;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 1.6rem;
+    text-align: center;
+    max-width: 90px;
+    line-height: 2.4rem;
+    font-weight: bold;
+    color: #666;
+    color: #8459A4; }
+
+.downloads {
+  text-align: center;
+  margin: 50px 0 15px; }
+  .downloads a {
+    display: inline-block;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    border: 2px solid #4D3D98;
+    border-radius: 3px;
+    padding: 6px 10px;
+    color: #4D3D98;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    transition: 0.3s ease; }
+    .downloads a:hover {
+      background: #4D3D98;
+      color: white;
+      font-weight: 400; }
+    .downloads a:first-child {
+      margin-right: 20px; }
+
+.social-media {
+  display: block !important; }
+  .social-media iframe {
+    margin-bottom: 10px; }
+  .social-media iframe:first-child {
+    width: 90px; }
+  .social-media iframe:nth-child(2) {
+    width: 95px !important; }
+  .social-media iframe:last-child {
+    width: 125px !important; }
+
+.main {
+  margin: 60px 0; }
+  .main h2 {
+    margin-top: 40px;
+    border-bottom: 2px solid #f4f4f4; }
+  .main p {
+    line-height: 3rem;
+    margin: 8px 0; }
+  .main p + ul {
+    margin-top: -10px; }
+  .main ul {
+    line-height: 2.2rem; }
+  .main h3 {
+    font-size: 1.8rem;
+    color: #8459A4;
+    margin-bottom: -5px; }
+
+code {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  background: #CFCCFF;
+  padding: 4px 6px;
+  border-radius: 2px;
+  font-size: 1.3rem; }
+
+pre code {
+  background: 0;
+  padding: 0.75em; }
+  pre code span {
+    padding: 0;
+    font-size: 1.3rem;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace; }
+
+.example div {
+  width: 250px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle; }
+.example pre {
+  vertical-align: middle;
+  display: inline-block;
+  width: calc( 100% - 250px); }
+
+.example2 {
+  margin: 15px 0 5px; }
+  .example2 div {
+    margin: 25px 0 0px;
+    text-align: center; }
+    .example2 div span {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px; }
+      .example2 div span:nth-of-type(even) {
+        margin-left: 100px;
+        text-align: right; }
+
+.example span, .example2 span {
+  cursor: pointer;
+  font-weight: bold;
+  color: #666; }
+
+table {
+  margin: 20px 0;
+  width: 100%;
+  border: 2px solid #8459A4; }
+  table th {
+    background: #CFCCFF;
+    background: #8459A4;
+    padding: 10px 4px;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 400; }
+  table td {
+    padding: 7px 8px;
+    line-height: 3.2rem; }
+  table tr:nth-child(odd) {
+    background: #F6F4FF; }
+
+.text {
+  max-width: 500px;
+  margin: 20px auto;
+  line-height: 3rem; }
+  .text span {
+    border-bottom: 2px solid #f39c12;
+    line-height: 2.8rem; }
+
+.user-example {
+  text-align: center; }
+  .user-example span {
+    position: relative;
+    display: inline-block; }
+  .user-example img {
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 5px solid #8459A4; }
+
 span {
   position: relative; }
 
 [simple-hint]:after {
   font-family: "Montserrat", sans-serif; }
 
-h2 {
-  font-size: 2.2rem; }
-
-.box2 {
-  max-width: 400px;
-  padding: 10px;
-  margin: 60px auto 0; }
-  .box2 span {
-    position: relative;
-    display: inline-block;
-    width: 50%;
-    text-align: center;
-    margin: 15px 0;
-    padding: 8px;
-    cursor: pointer;
-    background: red; }
-    .box2 span:nth-of-type(2) {
-      text-align: left; }
-    .box2 span:nth-of-type(3) {
-      text-align: right; }
-    .box2 span:first-child, .box2 span:last-child {
-      display: block;
-      width: 100%; }
-
-.box {
-  max-width: 450px;
-  margin: 60px auto; }
-  .box div {
-    position: relative; }
-    .box div:nth-of-type(2) {
-      width: 50%;
-      display: inline-block; }
-    .box div:nth-of-type(3) {
-      width: 50%;
-      display: inline-block;
-      text-align: right; }
-    .box div:last-of-type, .box div:first-of-type {
-      text-align: center; }
-  .box span {
-    margin: 10px 0;
-    padding: 5px;
-    display: inline-block;
-    cursor: pointer;
-    position: relative; }
-
-.text {
-  max-width: 500px;
-  margin: 60px auto; }
-  .text span {
-    border-bottom: 1px dashed #f39c12;
-    line-height: 2.8rem; }
-
-/* .test {
-	margin: 150px;
-	div {
-		display: inline-block;
-		background: #292929;
-		padding: 6px;
-		line-height: 1.8rem;
-		color: white;
-		margin-top: 30px;
-		opacity: 0;
-		transition: 0.3s ease;
-		font-size: 1.1rem;
-
-		transform: translateY(50%);
-	}
-}
-
-.activate {
-	opacity: 1 !important;
-} */
+.js-example {
+  margin: 25px 0;
+  text-align: center; }
+  .js-example span {
+    margin-right: 80px;
+    font-weight: bold; }
