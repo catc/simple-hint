@@ -1,0 +1,20 @@
+{
+  "name": "simple-hint",
+  "version": "2.0",
+  "homepage": "https://github.com/catc/simple-hint",
+  "authors": [
+    "Catalin Covic <catalin.covic@gmail.com>"
+  ],
+  "description": "CSS-only tooltip packed with a variety of features",
+  "main": "dist/simple-hint.css",
+  "keywords": [
+    "hint",
+    "tooltip"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "*",
+    "!dist/**/*",
+    "!LICENSE"
+  ]
+}
