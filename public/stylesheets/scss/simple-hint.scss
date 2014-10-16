@@ -34,22 +34,20 @@
 	}
 }
 
-$def: #292929;
 
+
+$default-color: #292929;
 
 [simple-hint] {
 	&:after, &:before {
 		display: inline-block;
 		pointer-events: none;
 		position: absolute;
-
-		// opacity: 0;
 		visibility: hidden;
 	}
 
 	&:hover {
 		&:after, &:before {
-			// opacity: 1;
 			visibility: visible;
 		}
 	}
@@ -64,21 +62,19 @@ $def: #292929;
 		content: attr(simple-hint);
 		text-align: center;
 		padding: 3px 7px;
-		font-size: 1.2rem;
-		line-height: 2em;
 		border-radius: 2px;
 		z-index: 9999;
 		color: white;
 		font-weight: 400;
-
-		// word-wrap: break-word;
 		white-space: nowrap;
-		// white-space: pre;
+		font-size: 1.2rem;
+		line-height: 2em;
 
-		background: $def;
+		background: $default-color;
 	}
 }
 
+// ---- positioning ---- 
 [class*="hint-bottom"], [class*="hint-top"] {
 	&:before {
 		right: 50%;
@@ -89,11 +85,9 @@ $def: #292929;
 		@include transform( translateX(-50%));
 	}
 }
-
 [class*="hint-bottom"] {
 	&:before {
-		border-bottom-color: $def;
-		// bottom: -10px;
+		border-bottom-color: $default-color;
 		top: 100%;
 	}
 	&:after {
@@ -101,23 +95,16 @@ $def: #292929;
 		top: 100%;
 	}
 }
-
 [class*="hint-top"] {
 	&:before {
-		border-top-color: $def;
-		// top: -10px;
+		border-top-color: $default-color;
 		bottom: 100%;
 	}
 	&:after {
 		bottom: 100%;
 		margin-bottom: 10px;
-		// bottom: 100%;
-		// margin-bottom: 10px;
-
 	}
 }
-
-
 [class*="hint-left"], [class*="hint-right"] {
 	&:before {
 		top: 50%;
@@ -128,48 +115,50 @@ $def: #292929;
 		@include transform(translateY(-50%));
 	}
 }
-
 [class*="hint-left"] {
 	&:before {
-		border-left-color: $def;
+		border-left-color: $default-color;
 		left: 0;
 		margin-left: -10px;
 	}
 	&:after {
-		// left: -100%;
-		// @include transform(translate(50%, -50%));
 		right: 100%;
 		margin-right: 10px;
-		// left: 0;
-		// transform: translate(-100%, -50%);
-
 	}
 }
-
 [class*="hint-right"] {
 	&:before {
-		border-right-color: $def;
+		border-right-color: $default-color;
 		right: 0;
 		margin-right: -10px;
-		// left: 100%;
 	}
 	&:after {
 		left: 100%;
 		margin-left: 10px;
-
-
 	}
 }
 
 
-// persist
+// ---- persist ---- 
 .hint-persist {
 	&:before, &:after {
 		visibility: visible;
 	}
 }
 
-// sizing
+
+// ----  mobile ---- 
+[class*="hint-"][class*="-mobile"] {
+	&:after, &:before {
+		@media only screen and (max-width : 768px) { 
+			display: none;
+		}
+		
+	}
+}
+
+
+// ---- sizing ---- 
 [class*="hint-"][class*="-s-small"]:after {
 	width: 200px;
 	white-space: initial;
@@ -184,7 +173,7 @@ $def: #292929;
 }
 
 
-// delay on default hints
+// ---- delay on default hints ---- 
 .hint-d-short {
 	&:hover:after, &:hover:before {
 		@include transition(visibility 0s 0.5s ease);
@@ -202,9 +191,9 @@ $def: #292929;
 }
 
 
-
-// opacity fade + delay
+// ---- fade in + delay ---- 
 [class*="hint-fade"] {
+	// fade in transition
 	&:before, &:after {
 		@include transition(opacity 0.5s ease);
 		opacity: 0;
@@ -234,13 +223,12 @@ $def: #292929;
 }
 
 
-// animation keyframes
+// ---- animation keyframes ---- 
 @include keyframes(top){
 	from { 
 		bottom: 125%; 
 		opacity: 0;
 	}
-	
 }
 @include keyframes(bottom){
 	from { 
@@ -263,7 +251,7 @@ $def: #292929;
 	}
 }
 
-// animation + delay
+// ---- animation + delay ---- 
 [class*="hint-anim"] {
 	&:after, &:before {
 		@include prefix(animation-fill-mode, both);
@@ -271,6 +259,7 @@ $def: #292929;
 		@include prefix(animation-timing-function, ease);
 	}
 
+	// animation
 	&[class*="hint-top"] {
 		&:hover:before, &:hover:after {
 			@include prefix(animation-name, top);
@@ -311,23 +300,12 @@ $def: #292929;
 }
 
 
-// mobile
-[class*="hint-"][class*="-mobile"] {
-	&:after, &:before {
-		@media only screen and (max-width : 768px) { 
-			display: none;
-		}
-		
-	}
-}
-
-
+// ---- color types---- 
 $info: #44C2F9;
 $success: #83C510;
 $error: #FF4C4C;
 $notice: #FFAE00;
 
-// types
 [class*="hint-"][class*="-t-info"] {
 	&[class*="hint-bottom"]:before{
 		border-bottom-color: $info;
@@ -345,7 +323,6 @@ $notice: #FFAE00;
 		background: $info;
 	}
 }
-
 [class*="hint-"][class*="-t-success"] {
 	&[class*="hint-bottom"]:before{
 		border-bottom-color: $success;
@@ -363,7 +340,6 @@ $notice: #FFAE00;
 		background: $success;
 	}
 }
-
 [class*="hint-"][class*="-t-error"] {
 	&[class*="hint-bottom"]:before{
 		border-bottom-color: $error;
@@ -381,7 +357,6 @@ $notice: #FFAE00;
 		background: $error;
 	}
 }
-
 [class*="hint-"][class*="-t-notice"] {
 	&[class*="hint-bottom"]:before{
 		border-bottom-color: $notice;
