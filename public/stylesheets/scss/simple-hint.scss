@@ -3,30 +3,23 @@
 
 @mixin prefix($name, $argument) {
 	-webkit-#{$name}: #{$argument};
-	-moz-#{$name}: #{$argument};
 	#{$name}: #{$argument};
 }
 @mixin transition($content...) {
 	-webkit-transition : $content;
-	-moz-transition    : $content;
 	transition         : $content;
 }
 @mixin transform ($content...) {
 	-webkit-transform : $content;
-	-moz-transform    : $content;
 	-ms-transform     : $content;
 	transform         : $content;
 }
 @mixin animation($content...) {
 	-webkit-animation : $content;
-	-moz-animation    : $content;
 	animation         : $content;
 }
 @mixin keyframes($name) {
 	@-webkit-keyframes #{$name} {
-		@content;
-	}
-	@-moz-keyframes #{$name} {
 		@content;
 	}
 	@keyframes #{$name} {

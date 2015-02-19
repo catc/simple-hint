@@ -32,12 +32,15 @@ gulp.task('scss', function(){
 	gulp.src( dev.scssInit )
 		.pipe( sass({errLogToConsole: true}) )
 		.pipe( gulp.dest( dev.cssDest) )
-		.pipe( livereload() );
 });
 
 // watch scss
 gulp.task('watch', function(){
 	gulp.watch( dev.scssWatch, ['scss'] );
+
+	// watch css
+	livereload.listen();
+	gulp.watch( dev.cssReload ).on('change', livereload.changed);
 });
 
 
