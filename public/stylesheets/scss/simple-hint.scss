@@ -31,7 +31,7 @@
 
 $default-color: #292929;
 
-[simple-hint] {
+[data-hint] {
 	&:after, &:before {
 		display: inline-block;
 		pointer-events: none;
@@ -52,7 +52,7 @@ $default-color: #292929;
 	}
 
 	&:after {
-		content: attr(simple-hint);
+		content: attr(data-hint);
 		text-align: center;
 		padding: 3px 7px;
 		border-radius: 2px;
@@ -188,7 +188,7 @@ $default-color: #292929;
 [class*="hint-fade"] {
 	// fade in transition
 	&:before, &:after {
-		@include transition(opacity 0.5s ease);
+		@include transition(opacity 0.3s ease, visibility 0.3s ease);
 		opacity: 0;
 	}
 	&:hover:before, &:hover:after{

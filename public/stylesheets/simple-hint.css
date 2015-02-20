@@ -1,17 +1,17 @@
 /*! Simple Hint v2.0 | Copyright (c) 2014 Catalin Covic | https://github.com/catc */
-[simple-hint]:after, [simple-hint]:before {
+[data-hint]:after, [data-hint]:before {
   display: inline-block;
   pointer-events: none;
   position: absolute;
   visibility: hidden; }
-[simple-hint]:hover:after, [simple-hint]:hover:before {
+[data-hint]:hover:after, [data-hint]:hover:before {
   visibility: visible; }
-[simple-hint]:before {
+[data-hint]:before {
   content: "";
   border: 5px solid transparent;
   z-index: 9998; }
-[simple-hint]:after {
-  content: attr(simple-hint);
+[data-hint]:after {
+  content: attr(data-hint);
   text-align: center;
   padding: 3px 7px;
   border-radius: 2px;
@@ -103,8 +103,8 @@
   transition: visibility 0s 2s ease; }
 
 [class*="hint-fade"]:before, [class*="hint-fade"]:after {
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
   opacity: 0; }
 [class*="hint-fade"]:hover:before, [class*="hint-fade"]:hover:after {
   opacity: 1; }
