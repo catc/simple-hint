@@ -521,19 +521,10 @@ footer {
   margin: 0 auto;
   position: relative;
   width: 960px; }
-  @media only screen and (max-width: 767px) {
-    #container {
-      max-width: 90%; } }
-  @media only screen and (max-width: 480px) {
-    #container {
-      max-width: 320px; } }
-  @media only screen and (min-width: 768px) and (max-width: 979px) {
-    #container {
-      min-width: 750px;
-      width: 95%; } }
-  @media only screen and (min-width: 980px) and (max-width: 1199px) {
-    #container {
-      width: 960px; } }
+  @media only screen and (max-width: 767px) { }
+  @media only screen and (max-width: 480px) { }
+  @media only screen and (min-width: 768px) and (max-width: 979px) { }
+  @media only screen and (min-width: 980px) and (max-width: 1199px) { }
   @media only screen and (min-width: 1200px) {
     #container {
       width: 1170px; } }

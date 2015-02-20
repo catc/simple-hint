@@ -14,22 +14,19 @@
 	-ms-transform     : $content;
 	transform         : $content;
 }
-@mixin animation($content...) {
-	-webkit-animation : $content;
-	animation         : $content;
-}
-@mixin keyframes($name) {
-	@-webkit-keyframes #{$name} {
-		@content;
-	}
-	@keyframes #{$name} {
-		@content;
-	}
-}
 
 
-
+// colors
 $default-color: #292929;
+$info: #44C2F9;
+$success: #83C510;
+$error: #FF4C4C;
+$notice: #FFAE00;
+
+// delays
+$delay-short: 0.4s;
+$delay-med: 1s;
+$delay-long: 1.5s;
 
 [data-hint] {
 	&:after, &:before {
@@ -169,26 +166,28 @@ $default-color: #292929;
 // ---- delay on default hints ---- 
 .hint-d-short {
 	&:hover:after, &:hover:before {
-		@include transition(visibility 0s 0.5s ease);
+		@include transition(visibility 0s $delay-short ease);
 	}
 }
 .hint-d-med {
 	&:hover:after, &:hover:before {
-		@include transition(visibility 0s 1s ease);
+		@include transition(visibility 0s $delay-med ease);
 	}
 }
 .hint-d-long {
 	&:hover:after, &:hover:before {
-		@include transition(visibility 0s 2s ease);
+		@include transition(visibility 0s $delay-long ease);
 	}
 }
 
 
 // ---- fade in + delay ---- 
+$fadein-delay: 0.2s;
+
 [class*="hint-fade"] {
 	// fade in transition
 	&:before, &:after {
-		@include transition(opacity 0.3s ease, visibility 0.3s ease);
+		@include transition(opacity $fadein-delay ease, visibility $fadein-delay ease);
 		opacity: 0;
 	}
 	&:hover:before, &:hover:after{
@@ -198,107 +197,104 @@ $default-color: #292929;
 	// delay
 	&[class*="-d-short"] {
 		&:hover:before, &:hover:after {
-			@include prefix(transition-delay, 0.5s)
+			@include prefix(transition-delay, $delay-short)
 		}
 	}
 
 	&[class*="-d-med"] {
 		&:hover:before, &:hover:after {
-			@include prefix(transition-delay, 1s)
+			@include prefix(transition-delay, $delay-med)
 		}
 	}
 
 	&[class*="-d-long"] {
 		&:hover:before, &:hover:after {
-			@include prefix(transition-delay, 2s)
+			@include prefix(transition-delay, $delay-long)
 		}
 	}
 }
 
-
-// ---- animation keyframes ---- 
-@include keyframes(top){
-	from { 
-		bottom: 125%; 
-		opacity: 0;
-	}
-}
-@include keyframes(bottom){
-	from { 
-		top: 125%;
-		opacity: 0;
-	}
-}
-@include keyframes(right){
-	from {
-		margin-right: -35px;
-		margin-left: 35px;
-		opacity: 0;
-	}
-}
-@include keyframes(left){
-	from {
-		margin-left: -35px;
-		margin-right: 35px;
-		opacity: 0;
-	}
-}
 
 // ---- animation + delay ---- 
+$animation-duration: 0.3s;
+
 [class*="hint-anim"] {
-	&:after, &:before {
-		@include prefix(animation-fill-mode, both);
-		@include prefix(animation-duration, 0.3s);
-		@include prefix(animation-timing-function, ease);
+	
+	&[class*="hint-top"] {
+		&:after, &:before {
+			bottom: 125%;
+			opacity: 0;
+			@include transition(opacity $animation-duration ease-out, visibility $animation-duration ease-out, bottom $animation-duration ease-out);
+		}
+		&:hover:after, &:hover:before {
+			opacity: 1;
+			bottom: 100%;
+		}
 	}
 
-	// animation
-	&[class*="hint-top"] {
-		&:hover:before, &:hover:after {
-			@include prefix(animation-name, top);
-		}
-	}
 	&[class*="hint-bottom"] {
-		&:hover:before, &:hover:after {
-			@include prefix(animation-name, bottom);
+		&:after, &:before {
+			top: 125%;
+			opacity: 0;
+			@include transition(opacity $animation-duration ease, visibility $animation-duration ease, top $animation-duration ease);
+		}
+		&:hover:after, &:hover:before {
+			top: 100%;
+			opacity: 1;
 		}
 	}
-	&[class*="hint-left"] {
-		&:hover:before, &:hover:after {
-			@include prefix(animation-name, left);
-		}
-	}
+
+
 	&[class*="hint-right"] {
-		&:hover:before, &:hover:after {
-			@include prefix(animation-name, right);
+		&:after, &:before {
+			margin-right: -25px;
+			margin-left: 25px;
+			opacity: 0;
+			@include transition(opacity $animation-duration ease-out, visibility $animation-duration ease, margin $animation-duration ease-out);
+		}
+		&:hover:after, &:hover:before {
+			margin-right: -10px;
+			margin-left: 10px;
+			opacity: 1;
 		}
 	}
+
+	&[class*="hint-left"] {
+		&:after, &:before {
+			margin-right: 25px;
+			margin-left: -25px;
+			opacity: 0;
+			@include transition(opacity $animation-duration ease-out, visibility $animation-duration ease, margin $animation-duration ease-out);
+		}
+		&:hover:after, &:hover:before {
+			margin-right: 10px;
+			margin-left: -10px;
+			opacity: 1;
+		}
+	}
+
 
 	// delay
-	&[class*="-d-short"] {
+	&[class*="-d-short"]:hover {
 		&:before, &:after {
-			@include prefix(animation-delay, 0.5s);
+			// @include prefix(animation-delay, 0.5s);
+			@include prefix(transition-delay, $delay-short)
 		}
 	}
-	&[class*="-d-med"] {
+	&[class*="-d-med"]:hover {
 		&:before, &:after {
-			@include prefix(animation-delay, 1s);
+			@include prefix(transition-delay, $delay-med)
 		}
 	}
-	&[class*="-d-long"] {
+	&[class*="-d-long"]:hover {
 		&:before, &:after {
-			@include prefix(animation-delay, 2s);
+			@include prefix(transition-delay, $delay-long)
 		}
 	}
 }
 
 
 // ---- color types---- 
-$info: #44C2F9;
-$success: #83C510;
-$error: #FF4C4C;
-$notice: #FFAE00;
-
 [class*="hint-"][class*="-t-info"] {
 	&[class*="hint-bottom"]:before{
 		border-bottom-color: $info;
