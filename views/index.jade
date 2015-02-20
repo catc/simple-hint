@@ -216,8 +216,12 @@ html
 					tr
 						td Delay
 						td <code>-d-short</code>, <code>-d-med</code>, <code>-d-long</code>
-						td append to <code>.hint-fade</code> or <code>.hint-anim</code>  class<br>
+						//- td append to <code>.hint-fade</code> or <code>.hint-anim</code>  class<br>
 							| if using no transition/animation, add to separate <code>.hint</code> class
+						td
+							| - append to <code>.hint-fade</code> or <code>.hint-anim</code> class
+							br
+							| - if using no transition/animation, add to separate <code>.hint</code> class (eg: <code>span(class="hint-top hint-d-med")</code> )
 
 
 				h2 Examples
