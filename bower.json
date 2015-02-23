@@ -13,8 +13,12 @@
   ],
   "license": "MIT",
   "ignore": [
-    "*",
+    "**/.*",
     "!dist/**/*",
-    "!LICENSE"
+    "!LICENSE",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
   ]
 }
