@@ -4,6 +4,10 @@ Simple-hint is a CSS-only tooltip library packed with a variety of features.
 
 For demo and usage, see [official documentation](http://catc.github.io/simple-hint/).
 
+To install via Bower:
+```bash
+$ bower install simple-hint
+```
 
 ## Features
 - positioning
