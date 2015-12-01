@@ -80,15 +80,15 @@
 
 [class*="hint-"][class*="-s-small"]:after {
   width: 200px;
-  white-space: initial; }
+  white-space: normal; }
 
 [class*="hint-"][class*="-s-med"]:after {
   width: 300px;
-  white-space: initial; }
+  white-space: normal; }
 
 [class*="hint-"][class*="-s-big"]:after {
   width: 450px;
-  white-space: initial; }
+  white-space: normal; }
 
 .hint-d-short:hover:after, .hint-d-short:hover:before {
   -webkit-transition: visibility 0s 0.4s ease;

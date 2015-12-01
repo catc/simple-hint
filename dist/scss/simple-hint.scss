@@ -151,15 +151,15 @@ $delay-long: 1.5s;
 // ---- sizing ---- 
 [class*="hint-"][class*="-s-small"]:after {
 	width: 200px;
-	white-space: initial;
+	white-space: normal;
 }
 [class*="hint-"][class*="-s-med"]:after {
 	width: 300px;
-	white-space: initial;
+	white-space: normal;
 }
 [class*="hint-"][class*="-s-big"]:after {
 	width: 450px;
-	white-space: initial;
+	white-space: normal;
 }
 
 
