@@ -13,6 +13,19 @@
 	transform         : $content;
 }
 
+/* 
+	=========================
+	CHANGE ANY VARIABLES HERE
+	=========================
+*/
+// distance between tooltip and parent element
+$parent-offset: 10px;
+
+// for aligning arrow relative tooltip when position alignment is not middle (eg: bottom-left, left-top)
+$arrow-alignment-offset: 15px;
+
+// arrow size
+$arrow-width: 5px;
 
 // colors
 $default-color: #292929;
@@ -21,65 +34,72 @@ $success: #83C510;
 $error: #FF4C4C;
 $notice: #FFAE00;
 
+// transition durations
+$fadein-duration: 0.2s;
+$animation-duration: 0.3s;
+
 // delays
 $delay-short: 0.4s;
 $delay-med: 1s;
 $delay-long: 1.5s;
 
+/* 
+	=========================
+*/
+
+
 [data-hint] {
+	&:after {
+		content: attr(data-hint);
+		text-align: center;
+		white-space: nowrap;
+		z-index: 9999;
+
+		/* 
+			============================
+			CHANGE ANY TOOLTIP CSS HERE
+			============================
+		*/
+		background: $default-color;
+		padding: 3px 7px;
+		border-radius: 2px;
+		color: white;
+		font-weight: 400;
+		font-size: 1.2rem;
+		line-height: 2em;
+		/* 
+			============================
+		*/
+	}
 	&:after, &:before {
 		display: inline-block;
 		pointer-events: none;
 		position: absolute;
 		visibility: hidden;
 	}
-
 	&:hover {
 		&:after, &:before {
 			visibility: visible;
 		}
 	}
-
 	&:before {
 		content: "";
-		border: 5px solid transparent;
+		border: $arrow-width solid transparent;
 		z-index: 9998;
 	}
-
-	&:after {
-		content: attr(data-hint);
-		text-align: center;
-		padding: 3px 7px;
-		border-radius: 2px;
-		z-index: 9999;
-		color: white;
-		font-weight: 400;
-		white-space: nowrap;
-		font-size: 1.2rem;
-		line-height: 2em;
-
-		background: $default-color;
-	}
 }
+
 
 // ---- positioning ---- 
-[class*="hint-bottom"], [class*="hint-top"] {
-	&:before {
-		right: 50%;
-		margin-right: -5px;
-	}
-	&:after {
-		left: 50%;
-		@include transform( translateX(-50%));
-	}
-}
+// top + bottom position
 [class*="hint-bottom"] {
 	&:before {
 		border-bottom-color: $default-color;
 		top: 100%;
+		margin-top: $parent-offset - $arrow-width * 2;
 	}
 	&:after {
-		margin-top: 10px;
+		margin-top: $parent-offset;
 		top: 100%;
 	}
 }
@@ -87,42 +107,89 @@ $delay-long: 1.5s;
 	&:before {
 		border-top-color: $default-color;
 		bottom: 100%;
+		margin-bottom: $parent-offset - $arrow-width * 2;
 	}
 	&:after {
 		bottom: 100%;
-		margin-bottom: 10px;
+		margin-bottom: $parent-offset;
 	}
 }
-[class*="hint-left"], [class*="hint-right"] {
+// top + bottom alignment
+[class*="hint-bottom-middle"], [class*="hint-top-middle"] {
 	&:before {
-		top: 50%;
-		margin-top: -5px;
+		right: 50%;
+		margin-right: -$arrow-width;
 	}
 	&:after {
-		top: 50%;
-		@include transform(translateY(-50%));
+		left: 50%;
+		@include transform( translateX(-50%));
 	}
 }
+[class*="hint-bottom-left"], [class*="hint-top-left"] {
+	&:before {
+		left: $arrow-alignment-offset;
+	}
+	&:after {
+		left: 0;
+	}
+}
+[class*="hint-bottom-right"], [class*="hint-top-right"] {
+	&:before {
+		right: $arrow-alignment-offset;
+	}
+	&:after {
+		right: 0;
+	}
+}
+
+// left + right position
 [class*="hint-left"] {
 	&:before {
 		border-left-color: $default-color;
 		left: 0;
-		margin-left: -10px;
+		margin-left: -$parent-offset;
 	}
 	&:after {
 		right: 100%;
-		margin-right: 10px;
+		margin-right: $parent-offset;
 	}
 }
 [class*="hint-right"] {
 	&:before {
 		border-right-color: $default-color;
 		right: 0;
-		margin-right: -10px;
+		margin-right: -$parent-offset;
 	}
 	&:after {
 		left: 100%;
-		margin-left: 10px;
+		margin-left: $parent-offset;
+	}
+}
+// left + right alignment
+[class*="hint-left-middle"], [class*="hint-right-middle"] {
+	&:before {
+		top: 50%;
+		margin-top: -$arrow-width;
+	}
+	&:after {
+		top: 50%;
+		@include transform(translateY(-50%));
+	}
+}
+[class*="hint-left-top"], [class*="hint-right-top"] {
+	&:before {
+		top: $arrow-alignment-offset;
+	}
+	&:after {
+		top: 0;
+	}
+}
+[class*="hint-left-bottom"], [class*="hint-right-bottom"] {
+	&:before {
+		bottom: $arrow-alignment-offset;
+	}
+	&:after {
+		bottom: 0;
 	}
 }
 
@@ -179,20 +246,8 @@ $delay-long: 1.5s;
 }
 
 
-// ---- fade in + delay ---- 
-$fadein-delay: 0.2s;
-
-[class*="hint-fade"] {
-	// fade in transition
-	&:before, &:after {
-		@include transition(opacity $fadein-delay ease, visibility $fadein-delay ease);
-		opacity: 0;
-	}
-	&:hover:before, &:hover:after{
-		opacity: 1;
-	}
-
-	// delay
+// ---- delay on animations ---- 
+[class*="hint-fade"], [class*="hint-anim"] {
 	&[class*="-d-short"] {
 		&:hover:before, &:hover:after {
 			@include prefix(transition-delay, $delay-short)
@@ -213,11 +268,20 @@ $fadein-delay: 0.2s;
 }
 
 
-// ---- animation + delay ---- 
-$animation-duration: 0.3s;
+// ---- fade in ---- 
+[class*="hint-fade"] {
+	&:before, &:after {
+		@include transition(opacity $fadein-duration ease-out, visibility $fadein-duration ease-out);
+		opacity: 0;
+	}
+	&:hover:before, &:hover:after{
+		opacity: 1;
+	}
+}
 
+
+// ---- animation ---- 
 [class*="hint-anim"] {
-	
 	&[class*="hint-top"] {
 		&:after, &:before {
 			bottom: 125%;
@@ -229,7 +293,6 @@ $animation-duration: 0.3s;
 			bottom: 100%;
 		}
 	}
-
 	&[class*="hint-bottom"] {
 		&:after, &:before {
 			top: 125%;
@@ -241,58 +304,36 @@ $animation-duration: 0.3s;
 			opacity: 1;
 		}
 	}
-
-
 	&[class*="hint-right"] {
 		&:after, &:before {
-			margin-right: -25px;
-			margin-left: 25px;
+			margin-right: -$parent-offset - 15px;;
+			margin-left: $parent-offset + 15px;
 			opacity: 0;
 			@include transition(opacity $animation-duration ease-out, visibility $animation-duration ease, margin $animation-duration ease-out);
 		}
 		&:hover:after, &:hover:before {
-			margin-right: -10px;
-			margin-left: 10px;
+			margin-right: -$parent-offset;
+			margin-left: $parent-offset;
 			opacity: 1;
 		}
 	}
-
 	&[class*="hint-left"] {
 		&:after, &:before {
-			margin-right: 25px;
-			margin-left: -25px;
+			margin-right: $parent-offset + 15px;
+			margin-left: -$parent-offset - 15px;
 			opacity: 0;
 			@include transition(opacity $animation-duration ease-out, visibility $animation-duration ease, margin $animation-duration ease-out);
 		}
 		&:hover:after, &:hover:before {
-			margin-right: 10px;
-			margin-left: -10px;
+			margin-right: $parent-offset;
+			margin-left: -$parent-offset;
 			opacity: 1;
-		}
-	}
-
-
-	// delay
-	&[class*="-d-short"]:hover {
-		&:before, &:after {
-			// @include prefix(animation-delay, 0.5s);
-			@include prefix(transition-delay, $delay-short)
-		}
-	}
-	&[class*="-d-med"]:hover {
-		&:before, &:after {
-			@include prefix(transition-delay, $delay-med)
-		}
-	}
-	&[class*="-d-long"]:hover {
-		&:before, &:after {
-			@include prefix(transition-delay, $delay-long)
 		}
 	}
 }
 
 
-// ---- color types---- 
+// ---- color types ---- 
 [class*="hint-"][class*="-t-info"] {
 	&[class*="hint-bottom"]:before{
 		border-bottom-color: $info;

@@ -29,7 +29,8 @@ gulp.task('pug', function(){
 		.pipe(pug({
 
 		}))
-		.pipe(gulp.dest('docs/'));
+		.pipe(gulp.dest('docs/'))
+		.pipe( connect.reload() )
 })
 gulp.task('sass-src', function(){
 	return gulp.src(paths.css.src)

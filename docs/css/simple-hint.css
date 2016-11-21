@@ -1,4 +1,32 @@
-/*! Simple Hint v2.1 | Copyright (c) 2014 Catalin Covic | https://github.com/catc */
+/* 
+	=========================
+	CHANGE ANY VARIABLES HERE
+	=========================
+*/
+/* 
+	=========================
+*/
+[data-hint]:after {
+  content: attr(data-hint);
+  text-align: center;
+  white-space: nowrap;
+  z-index: 9999;
+  /* 
+			============================
+			CHANGE ANY TOOLTIP CSS HERE
+			============================
+		*/
+  background: #292929;
+  padding: 3px 7px;
+  border-radius: 2px;
+  color: white;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 2em;
+  /* 
+			============================
+		*/ }
+
 [data-hint]:after, [data-hint]:before {
   display: inline-block;
   pointer-events: none;
@@ -13,32 +41,10 @@
   border: 5px solid transparent;
   z-index: 9998; }
 
-[data-hint]:after {
-  content: attr(data-hint);
-  text-align: center;
-  padding: 3px 7px;
-  border-radius: 2px;
-  z-index: 9999;
-  color: white;
-  font-weight: 400;
-  white-space: nowrap;
-  font-size: 1.2rem;
-  line-height: 2em;
-  background: #292929; }
-
-[class*="hint-bottom"]:before, [class*="hint-top"]:before {
-  right: 50%;
-  margin-right: -5px; }
-
-[class*="hint-bottom"]:after, [class*="hint-top"]:after {
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%); }
-
 [class*="hint-bottom"]:before {
   border-bottom-color: #292929;
-  top: 100%; }
+  top: 100%;
+  margin-top: 0px; }
 
 [class*="hint-bottom"]:after {
   margin-top: 10px;
@@ -46,21 +52,34 @@
 
 [class*="hint-top"]:before {
   border-top-color: #292929;
-  bottom: 100%; }
+  bottom: 100%;
+  margin-bottom: 0px; }
 
 [class*="hint-top"]:after {
   bottom: 100%;
   margin-bottom: 10px; }
 
-[class*="hint-left"]:before, [class*="hint-right"]:before {
-  top: 50%;
-  margin-top: -5px; }
+[class*="hint-bottom-middle"]:before, [class*="hint-top-middle"]:before {
+  right: 50%;
+  margin-right: -5px; }
 
-[class*="hint-left"]:after, [class*="hint-right"]:after {
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%); }
+[class*="hint-bottom-middle"]:after, [class*="hint-top-middle"]:after {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+[class*="hint-bottom-left"]:before, [class*="hint-top-left"]:before {
+  left: 15px; }
+
+[class*="hint-bottom-left"]:after, [class*="hint-top-left"]:after {
+  left: 0; }
+
+[class*="hint-bottom-right"]:before, [class*="hint-top-right"]:before {
+  right: 15px; }
+
+[class*="hint-bottom-right"]:after, [class*="hint-top-right"]:after {
+  right: 0; }
 
 [class*="hint-left"]:before {
   border-left-color: #292929;
@@ -79,6 +98,28 @@
 [class*="hint-right"]:after {
   left: 100%;
   margin-left: 10px; }
+
+[class*="hint-left-middle"]:before, [class*="hint-right-middle"]:before {
+  top: 50%;
+  margin-top: -5px; }
+
+[class*="hint-left-middle"]:after, [class*="hint-right-middle"]:after {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+[class*="hint-left-top"]:before, [class*="hint-right-top"]:before {
+  top: 15px; }
+
+[class*="hint-left-top"]:after, [class*="hint-right-top"]:after {
+  top: 0; }
+
+[class*="hint-left-bottom"]:before, [class*="hint-right-bottom"]:before {
+  bottom: 15px; }
+
+[class*="hint-left-bottom"]:after, [class*="hint-right-bottom"]:after {
+  bottom: 0; }
 
 .hint-persist:before, .hint-persist:after {
   visibility: visible; }
@@ -111,25 +152,25 @@
   -webkit-transition: visibility 0s 1.5s ease;
   transition: visibility 0s 1.5s ease; }
 
+[class*="hint-fade"][class*="-d-short"]:hover:before, [class*="hint-fade"][class*="-d-short"]:hover:after, [class*="hint-anim"][class*="-d-short"]:hover:before, [class*="hint-anim"][class*="-d-short"]:hover:after {
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s; }
+
+[class*="hint-fade"][class*="-d-med"]:hover:before, [class*="hint-fade"][class*="-d-med"]:hover:after, [class*="hint-anim"][class*="-d-med"]:hover:before, [class*="hint-anim"][class*="-d-med"]:hover:after {
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s; }
+
+[class*="hint-fade"][class*="-d-long"]:hover:before, [class*="hint-fade"][class*="-d-long"]:hover:after, [class*="hint-anim"][class*="-d-long"]:hover:before, [class*="hint-anim"][class*="-d-long"]:hover:after {
+  -webkit-transition-delay: 1.5s;
+  transition-delay: 1.5s; }
+
 [class*="hint-fade"]:before, [class*="hint-fade"]:after {
-  -webkit-transition: opacity 0.2s ease, visibility 0.2s ease;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  -webkit-transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
   opacity: 0; }
 
 [class*="hint-fade"]:hover:before, [class*="hint-fade"]:hover:after {
   opacity: 1; }
-
-[class*="hint-fade"][class*="-d-short"]:hover:before, [class*="hint-fade"][class*="-d-short"]:hover:after {
-  -webkit-transition-delay: 0.4s;
-  transition-delay: 0.4s; }
-
-[class*="hint-fade"][class*="-d-med"]:hover:before, [class*="hint-fade"][class*="-d-med"]:hover:after {
-  -webkit-transition-delay: 1s;
-  transition-delay: 1s; }
-
-[class*="hint-fade"][class*="-d-long"]:hover:before, [class*="hint-fade"][class*="-d-long"]:hover:after {
-  -webkit-transition-delay: 1.5s;
-  transition-delay: 1.5s; }
 
 [class*="hint-anim"][class*="hint-top"]:after, [class*="hint-anim"][class*="hint-top"]:before {
   bottom: 125%;
@@ -174,18 +215,6 @@
   margin-right: 10px;
   margin-left: -10px;
   opacity: 1; }
-
-[class*="hint-anim"][class*="-d-short"]:hover:before, [class*="hint-anim"][class*="-d-short"]:hover:after {
-  -webkit-transition-delay: 0.4s;
-  transition-delay: 0.4s; }
-
-[class*="hint-anim"][class*="-d-med"]:hover:before, [class*="hint-anim"][class*="-d-med"]:hover:after {
-  -webkit-transition-delay: 1s;
-  transition-delay: 1s; }
-
-[class*="hint-anim"][class*="-d-long"]:hover:before, [class*="hint-anim"][class*="-d-long"]:hover:after {
-  -webkit-transition-delay: 1.5s;
-  transition-delay: 1.5s; }
 
 [class*="hint-"][class*="-t-info"][class*="hint-bottom"]:before {
   border-bottom-color: #44C2F9; }
