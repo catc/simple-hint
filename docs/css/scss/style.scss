@@ -7,7 +7,19 @@
 
 
 body {
-	
+
+}
+
+.testing-layout {
+	min-height: 200vh;
+	padding: 60px;
+	padding-left: 150px;
+
+	span {
+		display: inline-block;
+		position: relative;
+		margin: 150px 100px;
+	}
 }
 
 .intro {
@@ -64,27 +76,23 @@ h2 {
 
 .intro-box {
 	text-align: center;
-
 	div {
-		&:nth-of-type(2){
-			margin-right: 65px;
-		}
-		&:nth-of-type(3){
-			text-align: right;
-		}
-		&:nth-of-type(2), &:nth-of-type(3){
-			display: inline-block;
-			span { margin: 20px 0;}
-		}
-		&:last-of-type, &:first-of-type {
-			text-align: center;
-		}
-
+		display: inline-block;
 		position: relative;
+
+		&:not(:nth-of-type(3n)){
+			margin-right: 75px;
+			margin-bottom: 60px;
+		}
+		&:nth-of-type(1) span { text-align: right; }
+		&:nth-of-type(4) span { text-align: right; }
+		&:nth-of-type(3) span { text-align: left; }
+		&:nth-of-type(6) span { text-align: left; }
 	}
 	span {
-		margin: 10px 0;
-		padding: 5px;
+		// margin: 10px 0;
+		// padding: 5px;
+		padding: 0 5px;
 		display: inline-block;
 		cursor: pointer;
 		font-size: 1.6rem;
@@ -132,6 +140,13 @@ h2 {
 	}
 }
 
+.available-position-options {
+	display: inline-block;
+	margin-right: 3em;
+	li {
+		margin-bottom: 5px;
+	}
+}
 
 
 .social-media {

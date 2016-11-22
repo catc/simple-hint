@@ -633,6 +633,15 @@ div[class^="col_"] {
   @-ms-viewport {
     width: device-width; } }
 
+.testing-layout {
+  min-height: 200vh;
+  padding: 60px;
+  padding-left: 150px; }
+  .testing-layout span {
+    display: inline-block;
+    position: relative;
+    margin: 150px 100px; }
+
 .intro {
   min-height: 100vh;
   overflow: hidden;
@@ -675,20 +684,21 @@ h2 {
 .intro-box {
   text-align: center; }
   .intro-box div {
+    display: inline-block;
     position: relative; }
-    .intro-box div:nth-of-type(2) {
-      margin-right: 65px; }
-    .intro-box div:nth-of-type(3) {
+    .intro-box div:not(:nth-of-type(3n)) {
+      margin-right: 75px;
+      margin-bottom: 60px; }
+    .intro-box div:nth-of-type(1) span {
       text-align: right; }
-    .intro-box div:nth-of-type(2), .intro-box div:nth-of-type(3) {
-      display: inline-block; }
-      .intro-box div:nth-of-type(2) span, .intro-box div:nth-of-type(3) span {
-        margin: 20px 0; }
-    .intro-box div:last-of-type, .intro-box div:first-of-type {
-      text-align: center; }
+    .intro-box div:nth-of-type(4) span {
+      text-align: right; }
+    .intro-box div:nth-of-type(3) span {
+      text-align: left; }
+    .intro-box div:nth-of-type(6) span {
+      text-align: left; }
   .intro-box span {
-    margin: 10px 0;
-    padding: 5px;
+    padding: 0 5px;
     display: inline-block;
     cursor: pointer;
     font-size: 1.6rem;
@@ -721,6 +731,12 @@ h2 {
       font-weight: 400; }
     .downloads a:first-child {
       margin-right: 20px; }
+
+.available-position-options {
+  display: inline-block;
+  margin-right: 3em; }
+  .available-position-options li {
+    margin-bottom: 5px; }
 
 .social-media {
   display: block !important; }

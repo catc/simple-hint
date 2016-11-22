@@ -2,6 +2,10 @@
   "name": "simple-hint",
   "version": "2.1.0",
   "private": true,
+  "scripts": {
+      "dev": "gulp dev",
+      "build": "gulp build"
+  },
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.13",

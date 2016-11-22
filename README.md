@@ -1,6 +1,6 @@
 Simple Hint
 ===========
-Simple-hint is a CSS-only tooltip library packed with a variety of features. 
+Simple-hint is a CSS-only tooltip library packed with a variety of features. Easily customizable if you want to configure any settings. 
 
 For demo and usage, see [official documentation](http://catc.github.io/simple-hint/).
 
@@ -12,7 +12,7 @@ $ bower install simple-hint
 ```
 
 ## Features
-- positioning
+- positioning + alignment
 - opacity fade in
 - animation
 - delay visibility on hover
@@ -21,13 +21,13 @@ $ bower install simple-hint
 - various colors
 - disable on mobile
 
-## Browser support
+### Browser support
 - Chrome, Firefox, Safari, Opera
 - IE 9+ for basic usage
 - IE 10+ for transitions & animations
 
-### Features to come
-None at the moment - if you have any suggestions or requests, open a ticket or feel free to send me an email.
+## Customizing styles
+Customing tooltips to your specific needs is easy. Just open the raw sass file - `src/simple-hint.scss`, change any sass variables, run `npm run build` and your updated css will be in `dist/`.
 
 ## License
 Simple-hint is licensed under the MIT license (http://opensource.org/licenses/MIT).
